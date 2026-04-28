@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Cat Trap Pro — About | The Story Behind the Game</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- ===== FAVICON - Browser Tab Icon ===== -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext x='50' y='50' font-size='70' text-anchor='middle' dy='.35em' fill='%236D42F5'%3E🐱%3C/text%3E%3C/svg%3E">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext x='50' y='50' font-size='70' text-anchor='middle' dy='.35em' fill='%236D42F5'%3E🐱%3C/text%3E%3C/svg%3E">
+
+    <!-- PAGE-SPECIFIC STYLES - Animated Header (Matches How to Play) -->
+    <style>
+        /* ========== OVERRIDE PAGE HEADER - ANIMATED GRADIENT ========== */
+        
+        .page-header {
+            background: transparent !important;
+            position: relative;
+            overflow: hidden;
+            padding: 8rem 2rem 5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #1a0b2e 0%, #2d1b4e 25%, #6D42F5 50%, #E83D8F 75%, #F5A623 100%);
+            background-size: 300% 300%;
+            animation: animatedGradient 10s ease infinite;
+            z-index: -2;
+        }
+        
+        @keyframes animatedGradient {
+            0% {
+                background-position: 0% 0%;
+            }
+            25% {
+                background-position: 50% 25%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            75% {
+                background-position: 50% 75%;
+            }
+            100% {
+                background-position: 0% 100%;
+            }
+        }
+        
+        .page-header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.08) 2px, transparent 2px), radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+            background-size: 60px 60px, 40px 40px;
+            pointer-events: none;
+            z-index: -1;
+            animation: floatParticles 20s linear infinite;
+        }
+        
+        @keyframes floatParticles {
+            0% {
+                background-position: 0 0, 0 0;
+            }
+            100% {
+                background-position: 120px 120px, 80px 80px;
+            }
+        }
+        
+        .page-header h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: white;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            animation: fadeInDown 0.8s ease;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .page-header h1 i {
+            margin-right: 0.5rem;
+            animation: iconPulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes iconPulse {
+            0%,
+            100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+        
+        .page-header p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.95);
+            animation: fadeInUp 0.8s ease;
+            position: relative;
+            z-index: 2;
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .back-to-game-btn {
+            display: inline-block;
+            margin-top: 1.5rem;
+            padding: 0.8rem 2rem;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            color: white;
+            border-radius: 50px;
+            font-weight: 600;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            transition: all 0.3s ease;
+        }
+        
+        .back-to-game-btn:hover {
+            background: white;
+            color: var(--accent);
+            transform: translateX(-5px);
+        }
+        /* ========== ENHANCED ABOUT PAGE STYLES ========== */
+        
+        .about-hero {
+            background: var(--grad-brand);
+            border-radius: var(--r-xl);
+            padding: 3rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .about-hero:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .about-card,
+        .about-stat,
+        .tech-item {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .about-card:hover,
+        .about-stat:hover,
+        .tech-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .tech-level {
+            height: 4px;
+            background: var(--border);
+            border-radius: var(--r-pill);
+            margin-top: 0.5rem;
+            overflow: hidden;
+        }
+        
+        .tech-level span {
+            display: block;
+            height: 100%;
+            background: var(--grad-brand);
+            border-radius: var(--r-pill);
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+        
+        .tech-item:hover .tech-level span {
+            width: 100% !important;
+        }
+        
+        .cta-button-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: transparent;
+            color: var(--text-1);
+            text-decoration: none;
+            padding: 0.8rem 1.8rem;
+            border-radius: var(--r-pill);
+            font-family: 'Syne', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all var(--t-base);
+            border: 2px solid var(--accent);
+            margin-left: 1rem;
+        }
+        
+        .cta-button-secondary:hover {
+            background: var(--accent);
+            color: white;
+            transform: translateY(-3px);
+            gap: 1rem;
+        }
+        /* ========== RESPONSIVE ========== */
+        
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            .about-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .tech-grid {
+                grid-template-columns: 1fr;
+            }
+            .cta-button-secondary {
+                margin-left: 0;
+                margin-top: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .about-stats {
+                grid-template-columns: 1fr;
+            }
+            .about-hero {
+                padding: 1.5rem;
+            }
+            .about-hero h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loader">
+            <div class="loader-paw">
+                <span class="paw-main">🐾</span>
+                <span class="paw-dot"></span>
+                <span class="paw-dot"></span>
+                <span class="paw-dot"></span>
+            </div>
+            <p class="loader-label">Loading About</p>
+            <div class="loader-track">
+                <div class="loader-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cursor Effects -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+    <div class="cursor-trail" id="cursorTrail"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <a href="index.html" class="logo">
+            <span class="logo-icon">🐱</span>
+            <span class="logo-text">CatTrap<em>Pro</em></span>
+        </a>
+        <ul class="nav-menu">
+            <li><a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="game.html" class="nav-link"><i class="fas fa-gamepad"></i> Play</a></li>
+            <li><a href="howto.html" class="nav-link"><i class="fas fa-book-open"></i> How to Play</a></li>
+            <li><a href="halloffame.html" class="nav-link"><i class="fas fa-trophy"></i> Hall of Fame</a></li>
+            <li><a href="settings.html" class="nav-link"><i class="fas fa-cog"></i> Settings</a></li>
+            <li><a href="about.html" class="nav-link active"><i class="fas fa-info-circle"></i> About</a></li>
+        </ul>
+        <div class="nav-right">
+            <button id="themeToggle" class="theme-btn" aria-label="Toggle theme">
+                <i class="fas fa-moon"></i>
+            </button>
+            <a href="game.html" class="nav-cta">Play Now <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </nav>
+
+    <!-- Page Header with Animated Gradient (Matches How to Play) -->
+    <div class="page-header">
+        <h1><i class="fas fa-info-circle"></i> About Cat Trap Pro</h1>
+        <p>Learn more about this project and the developer</p>
+        <a href="game.html" class="back-to-game-btn">
+            <i class="fas fa-gamepad"></i> Back to Game
+        </a>
+    </div>
+
+    <!-- Main Content -->
+    <main class="content-page">
+
+        <!-- ======================================== -->
+        <!-- ABOUT HERO SECTION - ENHANCED -->
+        <!-- ======================================== -->
+        <div class="about-hero">
+            <div class="about-hero-content">
+                <div class="about-hero-icon">🐱</div>
+                <h2>Cat Trap Pro</h2>
+                <p>The ultimate reflex-based cat catching game. Built with pure HTML, CSS, and JavaScript.</p>
+                <div class="about-hero-badges">
+                    <span class="hero-badge"><i class="fas fa-code"></i> No Frameworks</span>
+                    <span class="hero-badge"><i class="fas fa-database"></i> Local Storage</span>
+                    <span class="hero-badge"><i class="fas fa-moon"></i> Dark/Light Mode</span>
+                    <span class="hero-badge"><i class="fas fa-gamepad"></i> 10 Levels</span>
+                    <span class="hero-badge"><i class="fas fa-star"></i> 3-Star Rating</span>
+                    <span class="hero-badge"><i class="fas fa-chart-line"></i> Combo System</span>
+                    <span class="hero-badge"><i class="fas fa-fire"></i> Combo Multiplier</span>
+                    <span class="hero-badge"><i class="fas fa-trophy"></i> Achievements</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ======================================== -->
+        <!-- ABOUT GRID - EXPANDED -->
+        <!-- ======================================== -->
+        <div class="about-grid">
+            <div class="about-card">
+                <div class="about-card-icon">🎮</div>
+                <h3>The Game</h3>
+                <p>Cat Trap Pro is an interactive reflex-based game where players test their speed and accuracy by clicking on a moving cat. The game features 10 progressive levels, a 3-star rating system, combo multipliers, and unlockable achievements.</p>
+                <div class="card-footer">
+                    <span class="card-tag">Reflex Game</span>
+                    <span class="card-tag">Browser Based</span>
+                    <span class="card-tag">Single Player</span>
+                </div>
+            </div>
+
+            <div class="about-card">
+                <div class="about-card-icon">👨‍💻</div>
+                <h3>Developer</h3>
+                <p><strong>Aung Kaung Myat</strong></p>
+                <p>Web Development Student</p>
+                <p>Year: 2026</p>
+                <div class="card-footer">
+                    <span class="card-tag">Web Technologies</span>
+                    <span class="card-tag">Frontend Dev</span>
+                    <span class="card-tag">UI/UX Enthusiast</span>
+                </div>
+            </div>
+
+            <div class="about-card">
+                <div class="about-card-icon">📚</div>
+                <h3>Technologies</h3>
+                <ul>
+                    <li><i class="fab fa-html5"></i> HTML5 - Semantic Structure</li>
+                    <li><i class="fab fa-css3-alt"></i> CSS3 - Variables, Grid, Flexbox, Animations</li>
+                    <li><i class="fab fa-js"></i> JavaScript - ES6+, Game Logic, DOM Manipulation</li>
+                    <li><i class="fas fa-database"></i> LocalStorage API - Data Persistence</li>
+                    <li><i class="fas fa-palette"></i> CSS Variables - Dynamic Theming</li>
+                    <li><i class="fas fa-chart-line"></i> Web Audio API - Sound Effects</li>
+                </ul>
+            </div>
+
+            <div class="about-card">
+                <div class="about-card-icon">✨</div>
+                <h3>Key Features</h3>
+                <ul>
+                    <li>🎯 10 Progressive Levels</li>
+                    <li>⭐ 3-Star Rating System</li>
+                    <li>🔥 Combo Multiplier (up to 10x)</li>
+                    <li>🎨 Cat Customization (Color, Size, Personality)</li>
+                    <li>🔊 Sound Effects with Volume Control</li>
+                    <li>🌓 Light/Dark Theme Toggle</li>
+                    <li>🏆 Hall of Fame & Achievements</li>
+                    <li>📊 Statistics Tracking</li>
+                    <li>💾 Export/Import Save Data</li>
+                    <li>📅 Daily Challenges</li>
+                    <li>🎮 Particle Effects on Click</li>
+                    <li>⏱️ Timer Ring Animation</li>
+                </ul>
+            </div>
+
+            <div class="about-card">
+                <div class="about-card-icon">📅</div>
+                <h3>Version History</h3>
+                <div class="version-item">
+                    <span class="version-badge">v2.0.0</span>
+                    <p><strong>Current Version</strong> - Complete UI overhaul with animations, particle effects, combo system, cat customization, and full localStorage integration.</p>
+                </div>
+                <div class="version-item">
+                    <span class="version-badge old">v1.0.0</span>
+                    <p><strong>Initial Release</strong> - Core gameplay with 10 levels, timer, score tracking, and 3-star rating system.</p>
+                </div>
+                <div class="card-footer">
+                    <span class="card-tag">Latest Update</span>
+                    <span class="card-tag">April 2026</span>
+                </div>
+            </div>
+
+            <div class="about-card">
+                <div class="about-card-icon">🔗</div>
+                <h3>References & Resources</h3>
+                <ul>
+                    <li><i class="fab fa-mdn"></i> MDN Web Docs - Documentation</li>
+                    <li><i class="fab fa-css3"></i> CSS-Tricks - CSS Techniques</li>
+                    <li><i class="fab fa-w3c"></i> W3Schools - Tutorials</li>
+                    <li><i class="fas fa-font"></i> Google Fonts - Typography</li>
+                    <li><i class="fas fa-icons"></i> Font Awesome - Icons</li>
+                    <li><i class="fab fa-github"></i> GitHub Pages - Hosting</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- STATS SECTION - ENHANCED -->
+
+        <div class="about-stats">
+            <div class="about-stat">
+                <span class="about-stat-number">10</span>
+                <span class="about-stat-label">Levels</span>
+            </div>
+            <div class="about-stat">
+                <span class="about-stat-number">3</span>
+                <span class="about-stat-label">Stars per Level</span>
+            </div>
+            <div class="about-stat">
+                <span class="about-stat-number">10x</span>
+                <span class="about-stat-label">Max Combo</span>
+            </div>
+            <div class="about-stat">
+                <span class="about-stat-number">8+</span>
+                <span class="about-stat-label">Achievements</span>
+            </div>
+            <div class="about-stat">
+                <span class="about-stat-number">7</span>
+                <span class="about-stat-label">Pages</span>
+            </div>
+            <div class="about-stat">
+                <span class="about-stat-number">100%</span>
+                <span class="about-stat-label">Pure Code</span>
+            </div>
+            <div class="about-stat">
+                <span class="about-stat-number">30</span>
+                <span class="about-stat-label">Seconds per Level</span>
+            </div>
+            <div class="about-stat">
+                <span class="about-stat-number">∞</span>
+                <span class="about-stat-label">Fun Guaranteed</span>
+            </div>
+        </div>
+
+        <!-- TECH STACK - ENHANCED -->
+
+        <div class="tech-stack">
+            <h3><i class="fas fa-code"></i> Technology Stack</h3>
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <i class="fab fa-html5"></i>
+                    <span>HTML5</span>
+                    <p>Semantic markup, accessibility, SEO friendly</p>
+                    <div class="tech-level"><span style="width: 95%"></span></div>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-css3-alt"></i>
+                    <span>CSS3</span>
+                    <p>Variables, Grid, Flexbox, Animations, Keyframes</p>
+                    <div class="tech-level"><span style="width: 90%"></span></div>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-js"></i>
+                    <span>JavaScript</span>
+                    <p>ES6+, Game Logic, localStorage, DOM Manipulation</p>
+                    <div class="tech-level"><span style="width: 88%"></span></div>
+                </div>
+                <div class="tech-item">
+                    <i class="fas fa-palette"></i>
+                    <span>CSS Variables</span>
+                    <p>Light/Dark theme switching, dynamic styling</p>
+                    <div class="tech-level"><span style="width: 85%"></span></div>
+                </div>
+                <div class="tech-item">
+                    <i class="fas fa-database"></i>
+                    <span>localStorage</span>
+                    <p>Data persistence, save/load functionality</p>
+                    <div class="tech-level"><span style="width: 80%"></span></div>
+                </div>
+                <div class="tech-item">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Web Audio API</span>
+                    <p>Sound effects, volume control</p>
+                    <div class="tech-level"><span style="width: 75%"></span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CALL TO ACTION -->
+        <div class="cta-section">
+            <a href="game.html" class="cta-button">
+                <i class="fas fa-play"></i> Start Playing Now!
+                <i class="fas fa-arrow-right"></i>
+            </a>
+            <a href="index.html" class="cta-button-secondary">
+                <i class="fas fa-home"></i> Back to Home
+            </a>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <span class="footer-logo">🐱 CatTrap<em>Pro</em></span>
+            </div>
+            <div class="footer-nav">
+                <h5>Pages</h5>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="game.html">Play Game</a></li>
+                    <li><a href="howto.html">How to Play</a></li>
+                    <li><a href="halloffame.html">Hall of Fame</a></li>
+                    <li><a href="settings.html">Settings</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </div>
+            <div class="footer-meta">
+                <p> Cat Trap Pro</p>
+                <p class="footer-quote">"Every cat is a master of the art of relaxation."</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/theme.js"></script>
+    <script>
+        // ABOUT PAGE - COMPLETE FUNCTIONALITY
+
+        // Hide loading screen
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                var loader = document.getElementById('loadingScreen');
+                if (loader) loader.classList.add('hidden');
+            }, 800);
+        });
+
+        // Cursor glow and trail effects
+        var glow = document.getElementById('cursorGlow');
+        var trail = document.getElementById('cursorTrail');
+        if (glow) {
+            document.addEventListener('mousemove', function(e) {
+                glow.style.left = e.clientX + 'px';
+                glow.style.top = e.clientY + 'px';
+            });
+        }
+        if (trail) {
+            var trailX = 0,
+                trailY = 0;
+            var mouseX = 0,
+                mouseY = 0;
+            document.addEventListener('mousemove', function(e) {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+            });
+
+            function animateTrail() {
+                trailX += (mouseX - trailX) * 0.15;
+                trailY += (mouseY - trailY) * 0.15;
+                trail.style.left = trailX + 'px';
+                trail.style.top = trailY + 'px';
+                requestAnimationFrame(animateTrail);
+            }
+            animateTrail();
+        }
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            var navbar = document.getElementById('navbar');
+            if (navbar) {
+                if (window.scrollY > 50) navbar.classList.add('scrolled');
+                else navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Intersection Observer for scroll animations
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        document.querySelectorAll('.about-card, .about-stat, .tech-item').forEach(function(el) {
+            observer.observe(el);
+        });
+    </script>
+</body>
+
+</html>

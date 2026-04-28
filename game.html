@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Cat Trap Pro — Play Game</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/game-additions.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- ===== FAVICON - Browser Tab Icon ===== -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext x='50' y='50' font-size='70' text-anchor='middle' dy='.35em' fill='%236D42F5'%3E🐱%3C/text%3E%3C/svg%3E">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext x='50' y='50' font-size='70' text-anchor='middle' dy='.35em' fill='%236D42F5'%3E🐱%3C/text%3E%3C/svg%3E">
+</head>
+
+<body>
+
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loader">
+            <div class="loader-paw">
+                <span class="paw-main">🐾</span>
+                <span class="paw-dot"></span>
+                <span class="paw-dot"></span>
+                <span class="paw-dot"></span>
+            </div>
+            <p class="loader-label">Preparing Game Arena…</p>
+            <div class="loader-track">
+                <div class="loader-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <a href="index.html" class="logo">
+            <span class="logo-icon">🐱</span>
+            <span class="logo-text">CatTrap<em>Pro</em></span>
+        </a>
+        <ul class="nav-menu">
+            <li><a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="game.html" class="nav-link active"><i class="fas fa-gamepad"></i> Play</a></li>
+            <li><a href="howto.html" class="nav-link"><i class="fas fa-book-open"></i> How to Play</a></li>
+            <li><a href="halloffame.html" class="nav-link"><i class="fas fa-trophy"></i> Hall of Fame</a></li>
+            <li><a href="settings.html" class="nav-link"><i class="fas fa-cog"></i> Settings</a></li>
+            <li><a href="about.html" class="nav-link"><i class="fas fa-info-circle"></i> About</a></li>
+        </ul>
+        <div class="nav-right">
+            <button id="themeToggle" class="theme-btn" aria-label="Toggle theme"><i class="fas fa-moon"></i></button>
+        </div>
+    </nav>
+
+    <main class="gp-main">
+
+        <!-- ── LEFT SIDEBAR ── -->
+        <aside class="gp-sidebar">
+
+            <!-- Level card -->
+            <div class="gp-card gp-level-card">
+                <div class="gp-level-top">
+                    <span class="gp-eyebrow">Current Level</span>
+                    <span class="gp-level-badge"><span id="levelNum" style="background:var(--grad-brand);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;font-family:Syne,sans-serif;font-size:1.55rem;font-weight:800;line-height:1;">1</span>
+                    <em style="font-style:normal;font-size:0.85rem;opacity:0.55;background:var(--grad-brand);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">/10</em>
+                    </span>
+                </div>
+                <div class="gp-bar-track">
+                    <div class="gp-bar-fill" id="levelBarFill" style="width:0%"></div>
+                </div>
+                <div class="gp-bar-labels"><span>Lvl 1</span><span>Lvl 10</span></div>
+            </div>
+
+            <!-- Stat pills grid -->
+            <div class="gp-stats-grid">
+                <!-- Score -->
+                <div class="gp-pill">
+                    <div class="gp-pill-icon">⭐</div>
+                    <div class="gp-pill-body">
+                        <span class="gp-pill-label">Score</span>
+                        <span class="gp-pill-value" id="scoreDisplay">0</span>
+                    </div>
+                </div>
+
+                <!-- Timer (full-width) -->
+                <div class="gp-pill gp-pill--timer" id="timerPill">
+                    <div class="gp-ring-wrap">
+                        <svg class="gp-ring-svg" viewBox="0 0 56 56" fill="none">
+                        <circle class="gp-ring-track" cx="28" cy="28" r="24" stroke-width="3.5"/>
+                        <circle class="gp-ring-prog" id="timerRing" cx="28" cy="28" r="24"
+                            stroke-width="3.5" stroke-linecap="round"
+                            stroke-dasharray="150.8" stroke-dashoffset="0"
+                            transform="rotate(-90 28 28)"/>
+                    </svg>
+                        <span class="gp-ring-num" id="timerDisplay">30</span>
+                    </div>
+                    <div class="gp-pill-body">
+                        <span class="gp-pill-label">Time Left</span>
+                        <span class="gp-pill-sub">seconds</span>
+                    </div>
+                </div>
+
+                <!-- Stars -->
+                <div class="gp-pill">
+                    <div class="gp-pill-icon">🌟</div>
+                    <div class="gp-pill-body">
+                        <span class="gp-pill-label">Stars</span>
+                        <div class="gp-stars-row" id="starsDisplay">
+                            <span class="gp-star">☆</span>
+                            <span class="gp-star">☆</span>
+                            <span class="gp-star">☆</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Combo -->
+                <div class="gp-pill gp-pill--combo" id="comboPill">
+                    <div class="gp-pill-icon">🔥</div>
+                    <div class="gp-pill-body">
+                        <span class="gp-pill-label">Combo</span>
+                        <span class="gp-pill-value gp-combo-val" id="comboVal">x1</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Requirements card -->
+            <div class="gp-card gp-req-card">
+                <div class="gp-req-title">
+                    <i class="fas fa-chart-bar"></i> Level <span id="currentLevelNum">1</span> Targets
+                </div>
+                <div class="gp-req-rows">
+                    <div class="gp-req-row">
+                        <div class="gp-req-stars">★<span class="dim">★★</span></div>
+                        <div class="gp-req-track">
+                            <div class="gp-req-fill" id="reqFill1" style="width:0%"></div>
+                        </div>
+                        <span class="gp-req-val" id="req1">5</span>
+                    </div>
+                    <div class="gp-req-row">
+                        <div class="gp-req-stars">★★<span class="dim">★</span></div>
+                        <div class="gp-req-track">
+                            <div class="gp-req-fill gp-req-fill--2" id="reqFill2" style="width:0%"></div>
+                        </div>
+                        <span class="gp-req-val" id="req2">8</span>
+                    </div>
+                    <div class="gp-req-row">
+                        <div class="gp-req-stars">★★★</div>
+                        <div class="gp-req-track">
+                            <div class="gp-req-fill gp-req-fill--3" id="reqFill3" style="width:0%"></div>
+                        </div>
+                        <span class="gp-req-val" id="req3">12</span>
+                    </div>
+                </div>
+                <div class="gp-req-tip"><i class="fas fa-lightbulb"></i> 3 stars to advance!</div>
+            </div>
+
+            <!-- Session stats -->
+            <div class="gp-card gp-session-card">
+                <div class="gp-session-title"><i class="fas fa-chart-line"></i> Session Stats</div>
+                <div class="gp-session-grid">
+                    <div class="gp-session-item">
+                        <span class="gp-session-val" id="sessionClicks">0</span>
+                        <span class="gp-session-label">Clicks</span>
+                    </div>
+                    <div class="gp-session-item">
+                        <span class="gp-session-val" id="sessionBestCombo">0</span>
+                        <span class="gp-session-label">Best Combo</span>
+                    </div>
+                    <div class="gp-session-item">
+                        <span class="gp-session-val" id="sessionAccuracy">—</span>
+                        <span class="gp-session-label">Accuracy</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Controls -->
+            <div class="gp-controls">
+                <button id="startBtn" class="btn-primary-hero gp-start-btn">
+                <i class="fas fa-play"></i> Start Game
+            </button>
+                <div class="gp-ctrl-row">
+                    <button id="restartBtn" class="gp-ctrl-btn">
+                    <i class="fas fa-redo-alt"></i> Restart
+                </button>
+                    <a href="settings.html" class="gp-ctrl-btn">
+                        <i class="fas fa-sliders-h"></i> Customise
+                    </a>
+                </div>
+            </div>
+
+        </aside>
+
+        <!-- ── ARENA (right) ── -->
+        <section class="gp-arena-wrap">
+
+            <!-- Meta bar above arena -->
+            <div class="gp-arena-meta">
+                <span class="gp-arena-hint" id="arenaHint">Press <strong>Start Game</strong> to begin!</span>
+                <div class="gp-arena-badges">
+                    <span class="gp-speed-badge" id="speedBadge">Speed: Slow</span>
+                    <span class="gp-hs-badge">🏆 Best: <strong id="hsBadge">0</strong></span>
+                </div>
+            </div>
+
+            <!-- THE ARENA BOX -->
+            <div class="gp-arena" id="gameArea">
+
+                <!-- Background dot grid -->
+                <div class="gp-arena-dots"></div>
+
+                <!-- IDLE overlay -->
+                <div class="gp-overlay gp-overlay--idle" id="overlayIdle">
+                    <div class="gp-ol-cat" id="idleCat">🐱</div>
+                    <p class="gp-ol-title">Ready to Play?</p>
+                    <p class="gp-ol-sub">Press <strong>Start Game</strong> to begin</p>
+                    <div class="gp-ol-steps">
+                        <span class="gp-ol-step"><span class="gp-step-num">1</span>Click the cat</span>
+                        <span class="gp-step-arrow">→</span>
+                        <span class="gp-ol-step"><span class="gp-step-num">2</span>Build combo</span>
+                        <span class="gp-step-arrow">→</span>
+                        <span class="gp-ol-step"><span class="gp-step-num">3</span>Earn stars</span>
+                    </div>
+                </div>
+
+                <!-- GAME OVER overlay -->
+                <div class="gp-overlay gp-overlay--gameover hidden" id="overlayGameOver">
+                    <div class="gp-ol-emoji">😿</div>
+                    <h2 class="gp-ol-title">Time's Up!</h2>
+                    <p class="gp-ol-score">You scored <strong id="goFinalScore">0</strong> points</p>
+                    <div class="gp-ol-stars" id="goStars">☆☆☆</div>
+                    <div class="gp-ol-actions">
+                        <button class="btn-primary-hero" id="goPlayAgain">
+                        <i class="fas fa-redo"></i> Play Again
+                    </button>
+                        <a href="halloffame.html" class="gp-ctrl-btn">View Stats</a>
+                    </div>
+                </div>
+
+                <!-- LEVEL UP overlay -->
+                <div class="gp-overlay gp-overlay--levelup hidden" id="overlayLevelUp">
+                    <div class="gp-ol-emoji">🎉</div>
+                    <h2 class="gp-ol-title">Level Up!</h2>
+                    <p class="gp-ol-sub" id="luSub">Moving to Level 2</p>
+                    <div class="gp-ol-stars" id="luStars">⭐⭐⭐</div>
+                    <div class="gp-lu-bar">
+                        <div class="gp-lu-bar-fill" id="luBarFill"></div>
+                    </div>
+                </div>
+
+                <!-- NEW HIGH SCORE overlay -->
+                <div class="gp-overlay gp-overlay--hs hidden" id="overlayHS">
+                    <div class="gp-ol-emoji">🏆</div>
+                    <h2 class="gp-ol-title">New High Score!</h2>
+                    <p class="gp-ol-score"><strong id="hsFinalScore">0</strong> points!</p>
+                    <div class="gp-ol-stars">⭐⭐⭐</div>
+                    <button class="btn-primary-hero" id="hsPlayAgain" style="margin-top:1rem">
+                    <i class="fas fa-redo"></i> Play Again
+                </button>
+                </div>
+
+                <!-- THE CAT -->
+                <div class="cat" id="cat">🐱</div>
+
+                <!-- Arena combo badge -->
+                <div class="gp-combo-badge hidden" id="comboCounter">
+                    <span class="gp-combo-num" id="comboBadgeNum">x2</span>
+                    <span class="gp-combo-lbl">COMBO!</span>
+                </div>
+
+                <!-- Burst particles -->
+                <div id="burstContainer"></div>
+
+            </div>
+
+            <!-- Star progress streak bar -->
+            <div class="gp-streak">
+                <span class="gp-streak-label">Next ★</span>
+                <div class="gp-streak-track">
+                    <div class="gp-streak-fill" id="streakFill" style="width:0%"></div>
+                </div>
+                <span class="gp-streak-pct" id="streakPct">0%</span>
+            </div>
+
+            <!-- Rotating tips -->
+            <div class="gp-tip-row" id="tipRow">
+                <i class="fas fa-bolt"></i>
+                <span id="tipText">Click rapidly to build your combo — 5× combo gives 5 points per click!</span>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Floating score pops -->
+    <div id="floatingScores"></div>
+    <!-- Notifications -->
+    <div id="notificationContainer"></div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <span class="footer-logo">🐱 CatTrap<em>Pro</em></span>
+            </div>
+            <div class="footer-nav">
+                <h5>Pages</h5>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="game.html">Play Game</a></li>
+                    <li><a href="howto.html">How to Play</a></li>
+                    <li><a href="halloffame.html">Hall of Fame</a></li>
+                    <li><a href="settings.html">Settings</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </div>
+            <div class="footer-meta">
+                <p> Cat Trap Pro</p>
+                <p class="footer-quote">"Every cat is a master of the art of relaxation."</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/theme.js"></script>
+    <script src="js/game.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,1146 @@
+/* ── 1. Main two-column layout ────────────────────────────── */
+
+.gp-main {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 1.5rem;
+    max-width: 1380px;
+    margin: 0 auto;
+    padding: 6.5rem 2rem 2rem;
+    min-height: calc(100vh - 80px);
+    align-items: start;
+}
+
+
+/* ── 2. Sidebar ───────────────────────────────────────────── */
+
+.gp-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    position: sticky;
+    top: 5.2rem;
+}
+
+
+/* shared card shell */
+
+.gp-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r-xl);
+    padding: 1.3rem 1.5rem;
+    transition: box-shadow var(--t-base);
+}
+
+.gp-card:hover {
+    box-shadow: var(--shadow-md);
+}
+
+
+/* ── Level card ── */
+
+.gp-level-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.8rem;
+}
+
+.gp-eyebrow {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--text-3);
+    font-weight: 600;
+}
+
+.gp-level-badge {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.55rem;
+    font-weight: 800;
+    background: var(--grad-brand);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+}
+
+.gp-level-badge em {
+    font-style: normal;
+    font-size: 0.85rem;
+    opacity: 0.55;
+    -webkit-text-fill-color: inherit;
+}
+
+.gp-bar-track {
+    height: 7px;
+    background: var(--border);
+    border-radius: var(--r-pill);
+    overflow: hidden;
+    margin-bottom: 0.4rem;
+}
+
+.gp-bar-fill {
+    height: 100%;
+    background: var(--grad-brand);
+    border-radius: var(--r-pill);
+    transition: width 0.7s cubic-bezier(.4, 0, .2, 1);
+}
+
+.gp-bar-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.68rem;
+    color: var(--text-3);
+}
+
+
+/* ── Stats pills grid ── */
+
+.gp-stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.65rem;
+}
+
+.gp-pill {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    padding: 0.9rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    position: relative;
+    overflow: hidden;
+    transition: all var(--t-spring);
+}
+
+.gp-pill::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--grad-brand);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--t-base);
+}
+
+.gp-pill:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+
+.gp-pill:hover::before {
+    transform: scaleX(1);
+}
+
+.gp-pill--timer {
+    grid-column: span 2;
+}
+
+.gp-pill--combo {
+    transition: all var(--t-spring);
+}
+
+.gp-pill--combo.active {
+    border-color: var(--accent-2);
+    background: linear-gradient(135deg, rgba(232, 61, 143, 0.07), var(--surface));
+}
+
+.gp-pill--combo.active .gp-combo-val {
+    color: var(--accent-2);
+}
+
+.gp-pill-icon {
+    font-size: 1.5rem;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+.gp-pill-label {
+    display: block;
+    font-size: 0.62rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-3);
+    margin-bottom: 0.12rem;
+}
+
+.gp-pill-value {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.55rem;
+    font-weight: 800;
+    color: var(--accent);
+    line-height: 1;
+}
+
+.gp-pill-sub {
+    font-size: 0.68rem;
+    color: var(--text-3);
+}
+
+.gp-combo-val {
+    transition: color var(--t-base);
+}
+
+
+/* timer ring */
+
+.gp-ring-wrap {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    flex-shrink: 0;
+}
+
+.gp-ring-svg {
+    width: 50px;
+    height: 50px;
+}
+
+.gp-ring-track {
+    stroke: var(--border);
+}
+
+.gp-ring-prog {
+    stroke: var(--accent);
+    transition: stroke-dashoffset 0.22s linear, stroke 0.35s ease;
+}
+
+.gp-ring-prog.warn {
+    stroke: var(--red);
+}
+
+.gp-ring-num {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: var(--text-1);
+    transition: color var(--t-base);
+}
+
+.gp-ring-num.warn {
+    color: var(--red);
+    animation: gpTimerPulse 0.5s ease-in-out infinite;
+}
+
+@keyframes gpTimerPulse {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.14);
+    }
+}
+
+
+/* stars row */
+
+.gp-stars-row {
+    display: flex;
+    gap: 0.2rem;
+    margin-top: 0.1rem;
+}
+
+.gp-star {
+    font-size: 1.15rem;
+    line-height: 1;
+    color: var(--text-3);
+    transition: all var(--t-spring);
+}
+
+.gp-star.earned {
+    color: var(--gold);
+    text-shadow: 0 0 8px rgba(245, 166, 35, 0.55);
+    animation: gpStarPop 0.4s var(--t-spring);
+}
+
+@keyframes gpStarPop {
+    0% {
+        transform: scale(0.4) rotate(-20deg);
+    }
+    65% {
+        transform: scale(1.3) rotate(5deg);
+    }
+    100% {
+        transform: scale(1) rotate(0);
+    }
+}
+
+
+/* ── Requirements card ── */
+
+.gp-req-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-1);
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    margin-bottom: 0.9rem;
+}
+
+.gp-req-title i {
+    color: var(--accent);
+}
+
+.gp-req-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+}
+
+.gp-req-row {
+    display: grid;
+    grid-template-columns: 42px 1fr 28px;
+    align-items: center;
+    gap: 0.55rem;
+}
+
+.gp-req-stars {
+    font-size: 0.82rem;
+    color: var(--gold);
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.gp-req-stars .dim {
+    color: var(--text-3);
+}
+
+.gp-req-track {
+    height: 6px;
+    background: var(--border);
+    border-radius: var(--r-pill);
+    overflow: hidden;
+}
+
+.gp-req-fill {
+    height: 100%;
+    background: var(--grad-brand);
+    border-radius: var(--r-pill);
+    transition: width 0.45s cubic-bezier(.4, 0, .2, 1);
+}
+
+.gp-req-fill--2 {
+    background: var(--grad-gold);
+}
+
+.gp-req-fill--3 {
+    background: linear-gradient(90deg, var(--gold), #ff9900);
+}
+
+.gp-req-val {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 800;
+    color: var(--text-1);
+    text-align: right;
+}
+
+.gp-req-tip {
+    margin-top: 0.85rem;
+    background: var(--accent-glow);
+    border-radius: var(--r-md);
+    padding: 0.5rem 0.85rem;
+    font-size: 0.76rem;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+
+/* ── Session stats card ── */
+
+.gp-session-card {}
+
+.gp-session-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--text-1);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-bottom: 0.9rem;
+}
+
+.gp-session-title i {
+    color: var(--accent);
+}
+
+.gp-session-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+}
+
+.gp-session-item {
+    text-align: center;
+}
+
+.gp-session-val {
+    display: block;
+    font-family: 'Syne', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 800;
+    background: var(--grad-brand);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.1;
+}
+
+.gp-session-label {
+    font-size: 0.65rem;
+    color: var(--text-3);
+}
+
+
+/* ── Controls ── */
+
+.gp-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+}
+
+.gp-start-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 1rem;
+    font-size: 1.05rem;
+}
+
+.gp-start-btn:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+.gp-ctrl-row {
+    display: flex;
+    gap: 0.55rem;
+}
+
+.gp-ctrl-btn {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    padding: 0.65rem 0.8rem;
+    border: 1.5px solid var(--border-strong);
+    border-radius: var(--r-pill);
+    background: var(--surface);
+    color: var(--text-2);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--t-base);
+    text-decoration: none;
+}
+
+.gp-ctrl-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: var(--accent-glow);
+    transform: translateY(-2px);
+}
+
+
+/* ── 3. Arena wrap (right column) ─────────────────────────── */
+
+.gp-arena-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+}
+
+
+/* meta bar above arena */
+
+.gp-arena-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 0.25rem;
+}
+
+.gp-arena-hint {
+    font-size: 0.82rem;
+    color: var(--text-3);
+    font-weight: 500;
+}
+
+.gp-arena-badges {
+    display: flex;
+    gap: 0.6rem;
+    align-items: center;
+}
+
+.gp-speed-badge {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 0.28rem 0.75rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r-pill);
+    color: var(--accent);
+    transition: all var(--t-base);
+}
+
+.gp-speed-badge.danger {
+    color: var(--red);
+    border-color: var(--red);
+}
+
+.gp-hs-badge {
+    font-size: 0.78rem;
+    color: var(--text-2);
+}
+
+.gp-hs-badge strong {
+    color: var(--gold);
+    font-family: 'Syne', sans-serif;
+}
+
+
+/* ── The Arena Box ── */
+
+.gp-arena {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    min-height: 420px;
+    background: var(--surface);
+    border: 2px solid var(--border);
+    border-radius: var(--r-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    cursor: crosshair;
+    transition: border-color var(--t-base), box-shadow var(--t-base);
+}
+
+.gp-arena.gp-arena--active {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px var(--accent-glow), var(--shadow-lg);
+}
+
+.gp-arena.gp-arena--warn {
+    border-color: var(--red);
+    box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.14), var(--shadow-lg);
+    animation: gpArenaPulse 0.5s ease-in-out infinite;
+}
+
+@keyframes gpArenaPulse {
+    0%,
+    100% {
+        box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.14), var(--shadow-lg);
+    }
+    50% {
+        box-shadow: 0 0 0 9px rgba(220, 38, 38, 0.06), var(--shadow-lg);
+    }
+}
+
+
+/* Dot grid background */
+
+.gp-arena-dots {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: radial-gradient(circle, var(--border) 1px, transparent 1px);
+    background-size: 28px 28px;
+    opacity: 0.55;
+}
+
+
+/* ── Overlays ── */
+
+.gp-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    z-index: 20;
+    border-radius: calc(var(--r-xl) - 2px);
+    transition: opacity 0.35s ease;
+}
+
+.gp-overlay.hidden {
+    display: none;
+}
+
+
+/* Idle */
+
+.gp-overlay--idle {
+    background: var(--surface);
+}
+
+.gp-ol-cat {
+    font-size: 5.5rem;
+    animation: gpIdleBob 2.2s ease-in-out infinite;
+    filter: drop-shadow(0 8px 20px rgba(109, 66, 245, 0.25));
+    margin-bottom: 0.3rem;
+}
+
+@keyframes gpIdleBob {
+    0%,
+    100% {
+        transform: translateY(0) rotate(-6deg);
+    }
+    50% {
+        transform: translateY(-14px) rotate(6deg);
+    }
+}
+
+.gp-ol-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.55rem;
+    font-weight: 800;
+    color: var(--text-1);
+}
+
+.gp-ol-sub {
+    font-size: 0.9rem;
+    color: var(--text-2);
+}
+
+.gp-ol-sub strong {
+    color: var(--accent);
+}
+
+.gp-ol-steps {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.gp-ol-step {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.82rem;
+    color: var(--text-2);
+    font-weight: 500;
+}
+
+.gp-step-num {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--grad-brand);
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.gp-step-arrow {
+    color: var(--text-3);
+    font-size: 0.8rem;
+}
+
+
+/* Gameover / levelup / hs */
+
+.gp-overlay--gameover,
+.gp-overlay--levelup,
+.gp-overlay--hs {
+    background: rgba(0, 0, 0, 0.56);
+    backdrop-filter: blur(10px);
+    animation: gpOverlayIn 0.35s ease;
+}
+
+@keyframes gpOverlayIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.gp-ol-emoji {
+    font-size: 4.5rem;
+    animation: gpEmojiPop 0.55s var(--t-spring);
+}
+
+@keyframes gpEmojiPop {
+    0% {
+        transform: scale(0);
+    }
+    70% {
+        transform: scale(1.25);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.gp-ol-score {
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.gp-ol-score strong {
+    color: var(--gold);
+    font-family: 'Syne', sans-serif;
+    font-size: 1.4rem;
+}
+
+.gp-ol-stars {
+    font-size: 2rem;
+    letter-spacing: 0.25rem;
+    margin: 0.25rem 0;
+}
+
+.gp-ol-actions {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 0.6rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+/* level-up countdown bar */
+
+.gp-lu-bar {
+    width: 200px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: var(--r-pill);
+    overflow: hidden;
+    margin-top: 0.5rem;
+}
+
+.gp-lu-bar-fill {
+    height: 100%;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: var(--r-pill);
+    width: 0%;
+    transition: width 2s linear;
+}
+
+
+/* ── The Cat ── */
+
+.cat {
+    position: absolute;
+    font-size: 4rem;
+    cursor: pointer;
+    user-select: none;
+    transition: left 0.09s cubic-bezier(.4, 0, .2, 1), top 0.09s cubic-bezier(.4, 0, .2, 1);
+    filter: drop-shadow(0 4px 14px rgba(109, 66, 245, 0.28));
+    z-index: 10;
+    line-height: 1;
+    will-change: left, top;
+}
+
+.cat:hover {
+    transform: scale(1.1);
+}
+
+.cat.captured {
+    animation: gpCatCatch 0.25s ease;
+}
+
+@keyframes gpCatCatch {
+    0% {
+        transform: scale(1.35) rotate(12deg);
+        filter: drop-shadow(0 0 20px var(--gold));
+    }
+    100% {
+        transform: scale(1) rotate(0);
+    }
+}
+
+
+/* ── Arena combo badge ── */
+
+.gp-combo-badge {
+    position: absolute;
+    top: 0.9rem;
+    right: 0.9rem;
+    background: var(--grad-brand);
+    padding: 0.6rem 0.85rem;
+    border-radius: var(--r-lg);
+    color: #fff;
+    z-index: 20;
+    box-shadow: 0 4px 18px rgba(109, 66, 245, 0.38);
+    animation: gpComboPop 0.38s var(--t-spring);
+    text-align: center;
+}
+
+.gp-combo-badge.hidden {
+    display: none;
+}
+
+.gp-combo-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.35rem;
+    font-weight: 800;
+    display: block;
+    line-height: 1;
+}
+
+.gp-combo-lbl {
+    font-size: 0.55rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    opacity: 0.88;
+}
+
+@keyframes gpComboPop {
+    0% {
+        transform: scale(0.65);
+    }
+    70% {
+        transform: scale(1.12);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+/* ── 4. Streak bar ────────────────────────────────────────── */
+
+.gp-streak {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0 0.25rem;
+}
+
+.gp-streak-label {
+    font-size: 0.73rem;
+    color: var(--text-3);
+    white-space: nowrap;
+}
+
+.gp-streak-track {
+    flex: 1;
+    height: 8px;
+    background: var(--border);
+    border-radius: var(--r-pill);
+    overflow: hidden;
+    position: relative;
+}
+
+.gp-streak-fill {
+    height: 100%;
+    background: var(--grad-brand);
+    border-radius: var(--r-pill);
+    transition: width 0.38s cubic-bezier(.4, 0, .2, 1);
+    position: relative;
+}
+
+.gp-streak-fill::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 3px rgba(109, 66, 245, 0.25);
+    opacity: 0;
+    transition: opacity var(--t-base);
+}
+
+.gp-streak-fill.has-value::after {
+    opacity: 1;
+}
+
+.gp-streak-pct {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--accent);
+    min-width: 34px;
+    text-align: right;
+}
+
+
+/* ── 5. Tip row ───────────────────────────────────────────── */
+
+.gp-tip-row {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.65rem 1rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    font-size: 0.8rem;
+    color: var(--text-2);
+    animation: gpTipFade 0.4s ease;
+}
+
+@keyframes gpTipFade {
+    from {
+        opacity: 0;
+        transform: translateY(4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.gp-tip-row i {
+    color: var(--accent);
+    flex-shrink: 0;
+}
+
+
+/* ── 6. Floating score pops ───────────────────────────────── */
+
+.gp-float-score {
+    position: fixed;
+    font-family: 'Syne', sans-serif;
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--gold);
+    pointer-events: none;
+    z-index: 9000;
+    text-shadow: 0 2px 8px rgba(245, 166, 35, 0.45);
+    animation: gpScorePop 0.72s ease-out forwards;
+}
+
+.gp-float-score.big {
+    font-size: 1.75rem;
+    color: var(--accent-2);
+}
+
+@keyframes gpScorePop {
+    0% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-54px) scale(1.28);
+    }
+}
+
+
+/* ── 7. Burst particles (click effect) ───────────────────── */
+
+.gp-burst-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 2.5px solid var(--accent);
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    animation: gpRingExpand 0.5s ease-out forwards;
+    z-index: 50;
+}
+
+@keyframes gpRingExpand {
+    0% {
+        width: 8px;
+        height: 8px;
+        opacity: 1;
+    }
+    100% {
+        width: 68px;
+        height: 68px;
+        opacity: 0;
+    }
+}
+
+.gp-burst-dot {
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    pointer-events: none;
+    z-index: 50;
+    animation: gpDotBurst 0.52s ease-out forwards;
+}
+
+@keyframes gpDotBurst {
+    0% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) scale(0);
+    }
+}
+
+
+/* ── 8. Notifications (game) ─────────────────────────────── */
+
+#notificationContainer {
+    position: fixed;
+    bottom: 1.4rem;
+    right: 1.4rem;
+    z-index: 5000;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    pointer-events: none;
+}
+
+.gp-notif {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: var(--surface);
+    border-left: 4px solid var(--accent);
+    padding: 0.85rem 1.2rem;
+    border-radius: var(--r-lg);
+    box-shadow: var(--shadow-lg);
+    transform: translateX(120%);
+    transition: transform 0.32s cubic-bezier(.68, -.55, .265, 1.55);
+    pointer-events: auto;
+    max-width: 300px;
+}
+
+.gp-notif.show {
+    transform: translateX(0);
+}
+
+.gp-notif--success {
+    border-left-color: var(--green);
+}
+
+.gp-notif--warning {
+    border-left-color: var(--gold);
+}
+
+.gp-notif--hs {
+    border-left-color: var(--gold);
+    background: linear-gradient(135deg, var(--surface), rgba(245, 166, 35, 0.08));
+}
+
+.gp-notif-icon {
+    font-size: 1.25rem;
+    flex-shrink: 0;
+}
+
+.gp-notif-msg {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-1);
+}
+
+
+/* ── 9. Confetti canvas ───────────────────────────────────── */
+
+.gp-confetti-canvas {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+
+/* ── 10. Responsive ──────────────────────────────────────── */
+
+@media (max-width: 1100px) {
+    .gp-main {
+        grid-template-columns: 260px 1fr;
+    }
+}
+
+@media (max-width: 900px) {
+    .gp-main {
+        grid-template-columns: 1fr;
+        padding-top: 5.5rem;
+    }
+    .gp-sidebar {
+        position: static;
+    }
+    .gp-stats-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .gp-pill--timer {
+        grid-column: span 2;
+    }
+    .gp-arena {
+        aspect-ratio: 4/3;
+        min-height: 320px;
+    }
+    .gp-session-grid {
+        gap: 0.3rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .gp-main {
+        padding: 5.2rem 0.8rem 1rem;
+        gap: 0.85rem;
+    }
+    .gp-stats-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    .gp-pill--timer {
+        grid-column: span 2;
+    }
+    .gp-arena {
+        min-height: 260px;
+    }
+    .cat {
+        font-size: 3rem;
+    }
+    .gp-ctrl-row {
+        flex-direction: column;
+    }
+    .gp-card {
+        padding: 1rem 1.1rem;
+    }
+    .gp-ol-steps {
+        flex-direction: column;
+        gap: 0.35rem;
+    }
+    .gp-step-arrow {
+        transform: rotate(90deg);
+    }
+}
+
+@media (max-width: 400px) {
+    .gp-stats-grid {
+        grid-template-columns: 1fr;
+    }
+    .gp-pill--timer {
+        grid-column: span 1;
+    }
+}

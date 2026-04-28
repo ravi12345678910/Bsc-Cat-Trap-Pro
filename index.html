@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cat Trap Pro — Home</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- ===== FAVICON - Browser Tab Icon ===== -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext x='50' y='50' font-size='70' text-anchor='middle' dy='.35em' fill='%236D42F5'%3E🐱%3C/text%3E%3C/svg%3E">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext x='50' y='50' font-size='70' text-anchor='middle' dy='.35em' fill='%236D42F5'%3E🐱%3C/text%3E%3C/svg%3E">
+</head>
+
+<body>
+
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loader">
+            <div class="loader-paw">
+                <span class="paw-main">🐾</span>
+                <span class="paw-dot"></span>
+                <span class="paw-dot"></span>
+                <span class="paw-dot"></span>
+            </div>
+            <p class="loader-label">Loading Cat Trap Pro</p>
+            <div class="loader-track">
+                <div class="loader-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cursor Glow -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <a href="index.html" class="logo">
+            <span class="logo-icon">🐱</span>
+            <span class="logo-text">CatTrap<em>Pro</em></span>
+        </a>
+        <ul class="nav-menu">
+            <li><a href="index.html" class="nav-link active"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="game.html" class="nav-link"><i class="fas fa-gamepad"></i> Play</a></li>
+            <li><a href="howto.html" class="nav-link"><i class="fas fa-book-open"></i> How to Play</a></li>
+            <li><a href="halloffame.html" class="nav-link"><i class="fas fa-trophy"></i> Hall of Fame</a></li>
+            <li><a href="settings.html" class="nav-link"><i class="fas fa-cog"></i> Settings</a></li>
+            <li><a href="about.html" class="nav-link"><i class="fas fa-info-circle"></i> About</a></li>
+        </ul>
+        <div class="nav-right">
+            <button id="themeToggle" class="theme-btn" aria-label="Toggle theme">
+                <i class="fas fa-moon"></i>
+            </button>
+            <a href="game.html" class="nav-cta">Play Now <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </nav>
+
+    <main>
+
+        <!-- ===== HERO ===== -->
+        <section class="hero">
+            <div class="hero-bg-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+            </div>
+            <div class="hero-inner">
+                <div class="hero-badge">
+                    <span class="badge-dot"></span> 10 Levels · 3-Star Ratings
+                </div>
+                <h1 class="hero-title">
+                    Catch the Cat.<br>
+                    <span class="hero-title-accent">Beat the Clock.</span>
+                </h1>
+                <p class="hero-desc">
+                    The ultimate reflex-testing browser game. Click on the sneaky cat before the timer runs out — every level gets faster and the stakes get higher.
+                </p>
+                <div class="hero-actions">
+                    <a href="game.html" class="btn-primary-hero">
+                        <i class="fas fa-play"></i> Start Playing
+                    </a>
+                    <a href="howto.html" class="btn-ghost-hero">
+                        How it works <i class="fas fa-chevron-right"></i>
+                    </a>
+                </div>
+
+                <!-- Live Stats Bar -->
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <span class="hero-stat-value" id="previewBestScore">0</span>
+                        <span class="hero-stat-label">Best Score</span>
+                    </div>
+                    <div class="hero-stat-divider"></div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-value" id="previewGamesPlayed">0</span>
+                        <span class="hero-stat-label">Games Played</span>
+                    </div>
+                    <div class="hero-stat-divider"></div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-value" id="previewHighestLevel">1</span>
+                        <span class="hero-stat-label">Highest Level</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Visual -->
+            <div class="hero-visual">
+                <div class="hero-screen">
+                    <div class="screen-topbar">
+                        <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                        <span class="screen-title">cat_trap_pro.exe</span>
+                    </div>
+                    <div class="screen-body">
+                        <div class="screen-hud">
+                            <div class="hud-item"><span class="hud-label">SCORE</span><span class="hud-val" id="demoScore">0</span></div>
+                            <div class="hud-item"><span class="hud-label">TIME</span><span class="hud-val" id="demoTimer">30</span></div>
+                            <div class="hud-item"><span class="hud-label">LEVEL</span><span class="hud-val">1</span></div>
+                        </div>
+                        <div class="screen-arena" id="demoArena">
+                            <div class="demo-cat" id="demoCat">🐱</div>
+                            <div class="click-ripple hidden" id="clickRipple"></div>
+                        </div>
+                        <div class="screen-stars">
+                            <span class="s-star" id="star1">☆</span>
+                            <span class="s-star" id="star2">☆</span>
+                            <span class="s-star" id="star3">☆</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Floating badges -->
+                <div class="float-badge badge-combo">
+                    <span class="fb-icon">⚡</span>
+                    <div>
+                        <b>5x COMBO!</b>
+                        <small>Keep clicking!</small>
+                    </div>
+                </div>
+                <div class="float-badge badge-level">
+                    <span class="fb-icon">🏆</span>
+                    <div>
+                        <b>Level Up!</b>
+                        <small>★★★ Earned</small>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== FEATURES ===== -->
+        <section class="features-section" id="features">
+            <div class="section-header">
+                <p class="section-eyebrow">Why You'll Love It</p>
+                <h2 class="section-title">Everything a cat game needs</h2>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card feature-card--large">
+                    <div class="feature-icon-wrap">🎯</div>
+                    <h3>10 Progressive Levels</h3>
+                    <p>Start slow and comfortable — then brace yourself. Each level the cat moves faster, reaction time shrinks, and every click counts more than the last.</p>
+                    <div class="feature-levels">
+                        <div class="level-pip active"></div>
+                        <div class="level-pip active"></div>
+                        <div class="level-pip active"></div>
+                        <div class="level-pip"></div>
+                        <div class="level-pip"></div>
+                        <div class="level-pip"></div>
+                        <div class="level-pip"></div>
+                        <div class="level-pip"></div>
+                        <div class="level-pip"></div>
+                        <div class="level-pip"></div>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon-wrap">⭐</div>
+                    <h3>3-Star Rating</h3>
+                    <p>Earn 1, 2 or 3 stars per level based on your score. Only a perfect run earns the full set.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon-wrap">⚡</div>
+                    <h3>Combo Multiplier</h3>
+                    <p>Chain clicks rapidly to build your multiplier and rack up massive scores before time runs out.</p>
+                </div>
+                <div class="feature-card feature-card--accent">
+                    <div class="feature-icon-wrap">🏆</div>
+                    <h3>Hall of Fame</h3>
+                    <p>Your high scores, achievements, and stats are saved locally so you can always track your improvement.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon-wrap">🎨</div>
+                    <h3>Customisable Cat</h3>
+                    <p>Change your cat's colour, size, and even personality. Make it uniquely yours.</p>
+                </div>
+                <div class="feature-card feature-card--wide">
+                    <div class="feature-icon-wrap">🔒</div>
+                    <h3>No Account. No Ads. No BS.</h3>
+                    <p>Built with pure HTML, CSS, and JavaScript. Everything saves to your browser — zero tracking, zero sign-ups. Just play.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== HOW IT WORKS ===== -->
+        <section class="how-section">
+            <div class="how-inner">
+                <div class="section-header align-left">
+                    <p class="section-eyebrow">Simple to Learn</p>
+                    <h2 class="section-title">How to play in 3 steps</h2>
+                </div>
+                <div class="steps-row">
+                    <div class="step-item">
+                        <div class="step-num">01</div>
+                        <div class="step-body">
+                            <h3>Click the cat</h3>
+                            <p>The cat jumps around the arena randomly. Click it before it moves again to score a point.</p>
+                        </div>
+                    </div>
+                    <div class="step-connector"><i class="fas fa-arrow-right"></i></div>
+                    <div class="step-item">
+                        <div class="step-num">02</div>
+                        <div class="step-body">
+                            <h3>Build your combo</h3>
+                            <p>Click rapidly without missing to build a multiplier. 5x combo = 5 points per click!</p>
+                        </div>
+                    </div>
+                    <div class="step-connector"><i class="fas fa-arrow-right"></i></div>
+                    <div class="step-item">
+                        <div class="step-num">03</div>
+                        <div class="step-body">
+                            <h3>Earn your stars</h3>
+                            <p>Hit the score threshold for 1, 2 or 3 stars. 3 stars unlocks the next level.</p>
+                        </div>
+                    </div>
+                </div>
+                <a href="howto.html" class="btn-outline-link">Full rules & level guide <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </section>
+
+        <!-- ===== DAILY CHALLENGE ===== -->
+        <section class="daily-section">
+            <div class="daily-card">
+                <div class="daily-left">
+                    <span class="daily-badge">Daily Challenge</span>
+                    <h2 id="challengeTitle">Catch 50 Cats!</h2>
+                    <p id="challengeDesc">Score 50 points in a single session to claim today's reward.</p>
+                    <div class="challenge-bar-wrap">
+                        <div class="challenge-bar-track">
+                            <div class="challenge-bar-fill" id="challengeProgress" style="width:0%"></div>
+                        </div>
+                        <span class="challenge-bar-label" id="challengePercent">0%</span>
+                    </div>
+                    <button id="playChallengeBtn" class="btn-primary-hero" style="margin-top:1.5rem;">
+                        <i class="fas fa-bolt"></i> Accept Challenge
+                    </button>
+                </div>
+                <div class="daily-right">
+                    <div class="daily-trophy">🏆</div>
+                    <div class="daily-glow"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== CAT FACT ===== -->
+        <section class="fact-section">
+            <div class="fact-inner">
+                <div class="fact-label"><i class="fas fa-graduation-cap"></i> Cat Fact of the Moment</div>
+                <p class="fact-text" id="catFactText">"Cats spend 70% of their lives sleeping!"</p>
+                <button id="newFactBtn" class="btn-fact-flip">
+                    <i class="fas fa-sync-alt"></i> Next fact
+                </button>
+            </div>
+        </section>
+
+        <!-- ===== SAVE MANAGEMENT ===== -->
+        <section class="save-section">
+            <div class="section-header">
+                <p class="section-eyebrow">Your Progress</p>
+                <h2 class="section-title">Save & restore your data</h2>
+                <p class="section-sub">Back up your high scores and achievements or restore them on another device.</p>
+            </div>
+            <div class="save-cards">
+                <div class="save-card" id="exportSaveBtn" style="cursor:pointer;">
+                    <div class="save-card-icon"><i class="fas fa-download"></i></div>
+                    <div>
+                        <h4>Export Save</h4>
+                        <p>Download a .json backup of all your progress.</p>
+                    </div>
+                </div>
+                <div class="save-card" id="importSaveBtn" style="cursor:pointer;">
+                    <div class="save-card-icon"><i class="fas fa-upload"></i></div>
+                    <div>
+                        <h4>Import Save</h4>
+                        <p>Upload a backup file to restore your game data.</p>
+                    </div>
+                </div>
+            </div>
+            <input type="file" id="importFile" accept=".json" style="display:none;">
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <span class="footer-logo">🐱 CatTrap<em>Pro</em></span>
+            </div>
+            <div class="footer-nav">
+                <h5>Pages</h5>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="game.html">Play Game</a></li>
+                    <li><a href="howto.html">How to Play</a></li>
+                    <li><a href="halloffame.html">Hall of Fame</a></li>
+                    <li><a href="settings.html">Settings</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </div>
+            <div class="footer-meta">
+                <p> Cat Trap Pro</p>
+                <p class="footer-quote">"Every cat is a master of the art of relaxation."</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="js/theme.js"></script>
+    <script>
+        /* ---- Loading screen ---- */
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                var s = document.getElementById('loadingScreen');
+                if (s) s.classList.add('hidden');
+            }, 1200);
+        });
+
+        /* ---- Cursor glow ---- */
+        var glow = document.getElementById('cursorGlow');
+        document.addEventListener('mousemove', function(e) {
+            glow.style.left = e.clientX + 'px';
+            glow.style.top = e.clientY + 'px';
+        });
+
+        /* ---- Navbar scroll ---- */
+        window.addEventListener('scroll', function() {
+            document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        /* ---- Stats preview ---- */
+        function updateStats() {
+            var map = {
+                previewBestScore: localStorage.getItem('catTrapHighScore') || 0,
+                previewGamesPlayed: localStorage.getItem('catTrapGamesPlayed') || 0,
+                previewHighestLevel: localStorage.getItem('catTrapHighestLevel') || 1
+            };
+            for (var id in map) {
+                var el = document.getElementById(id);
+                if (el) el.textContent = map[id];
+            }
+        }
+        updateStats();
+
+        /* ---- Cat facts ---- */
+        var facts = [
+            "Cats spend 70% of their lives sleeping!",
+            "A group of cats is called a clowder.",
+            "Cats can make over 100 different sounds.",
+            "A cat's nose print is unique, like a fingerprint.",
+            "Cats have 32 muscles in each ear.",
+            "The oldest known pet cat lived 9,500 years ago.",
+            "Cats can jump up to 6 times their own length.",
+            "A cat's purr vibrates at healing frequencies."
+        ];
+        var factIdx = 0;
+        document.getElementById('newFactBtn').addEventListener('click', function() {
+            factIdx = (factIdx + 1) % facts.length;
+            var el = document.getElementById('catFactText');
+            el.style.opacity = 0;
+            setTimeout(function() {
+                el.textContent = '"' + facts[factIdx] + '"';
+                el.style.opacity = 1;
+            }, 200);
+        });
+
+        /* ---- Demo mini-game in hero ---- */
+        (function() {
+            var arena = document.getElementById('demoArena');
+            var cat = document.getElementById('demoCat');
+            var scoreEl = document.getElementById('demoScore');
+            var timerEl = document.getElementById('demoTimer');
+            var ripple = document.getElementById('clickRipple');
+            var s1 = document.getElementById('star1');
+            var s2 = document.getElementById('star2');
+            var s3 = document.getElementById('star3');
+            var score = 0,
+                timeLeft = 30;
+
+            function moveCat() {
+                var maxX = arena.offsetWidth - 60;
+                var maxY = arena.offsetHeight - 60;
+                var x = Math.random() * maxX;
+                var y = Math.random() * maxY;
+                cat.style.left = x + 'px';
+                cat.style.top = y + 'px';
+            }
+
+            var moveInterval = setInterval(moveCat, 900);
+            moveCat();
+
+            cat.addEventListener('click', function(e) {
+                score++;
+                scoreEl.textContent = score;
+                if (score >= 5) s1.textContent = '★';
+                if (score >= 8) s2.textContent = '★';
+                if (score >= 12) s3.textContent = '★';
+
+                var pop = document.createElement('div');
+                pop.className = 'score-pop';
+                pop.textContent = '+1';
+                pop.style.left = e.offsetX + 'px';
+                pop.style.top = e.offsetY + 'px';
+                arena.appendChild(pop);
+                setTimeout(function() {
+                    pop.remove();
+                }, 700);
+
+                moveCat();
+            });
+
+            var timerInterval = setInterval(function() {
+                timeLeft--;
+                timerEl.textContent = timeLeft;
+                if (timeLeft <= 5) timerEl.style.color = '#ef4444';
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    clearInterval(moveInterval);
+                    cat.style.opacity = 0.3;
+                }
+            }, 1000);
+        })();
+
+        /* ---- Daily challenge ---- */
+        document.getElementById('playChallengeBtn').addEventListener('click', function() {
+            window.location.href = 'game.html?mode=challenge';
+        });
+
+        /* ---- Export save ---- */
+        document.getElementById('exportSaveBtn').addEventListener('click', function() {
+            var data = {
+                highScore: localStorage.getItem('catTrapHighScore') || 0,
+                gamesPlayed: localStorage.getItem('catTrapGamesPlayed') || 0,
+                totalStars: localStorage.getItem('catTrapTotalStars') || 0,
+                highestLevel: localStorage.getItem('catTrapHighestLevel') || 1,
+                settings: localStorage.getItem('catTrapSettings'),
+                achievements: localStorage.getItem('catTrapAchievements')
+            };
+            var blob = new Blob([JSON.stringify(data, null, 2)], {
+                type: 'application/json'
+            });
+            var url = URL.createObjectURL(blob);
+            var a = document.createElement('a');
+            a.href = url;
+            a.download = 'cattrap_save_' + new Date().toISOString().split('T')[0] + '.json';
+            a.click();
+            URL.revokeObjectURL(url);
+        });
+
+        /* ---- Import save ---- */
+        document.getElementById('importSaveBtn').addEventListener('click', function() {
+            document.getElementById('importFile').click();
+        });
+        document.getElementById('importFile').addEventListener('change', function(e) {
+            var file = e.target.files[0];
+            if (!file) return;
+            var reader = new FileReader();
+            reader.onload = function(ev) {
+                try {
+                    var d = JSON.parse(ev.target.result);
+                    if (d.highScore) localStorage.setItem('catTrapHighScore', d.highScore);
+                    if (d.gamesPlayed) localStorage.setItem('catTrapGamesPlayed', d.gamesPlayed);
+                    if (d.totalStars) localStorage.setItem('catTrapTotalStars', d.totalStars);
+                    if (d.highestLevel) localStorage.setItem('catTrapHighestLevel', d.highestLevel);
+                    if (d.settings) localStorage.setItem('catTrapSettings', d.settings);
+                    if (d.achievements) localStorage.setItem('catTrapAchievements', d.achievements);
+                    alert('✅ Save imported! Refreshing...');
+                    location.reload();
+                } catch (err) {
+                    alert('❌ Invalid save file.');
+                }
+            };
+            reader.readAsText(file);
+        });
+
+        /* ---- Intersection observer for scroll animations ---- */
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) entry.target.classList.add('in-view');
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        document.querySelectorAll('.feature-card, .step-item, .save-card').forEach(function(el) {
+            observer.observe(el);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,1389 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Cat Trap Pro — How to Play | Master the Hunt</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <!-- ===== FAVICON - Browser Tab Icon ===== -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext x='50' y='50' font-size='70' text-anchor='middle' dy='.35em' fill='%236D42F5'%3E🐱%3C/text%3E%3C/svg%3E">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext x='50' y='50' font-size='70' text-anchor='middle' dy='.35em' fill='%236D42F5'%3E🐱%3C/text%3E%3C/svg%3E">
+
+    <style>
+        .page-header {
+            background: transparent !important;
+            position: relative;
+            overflow: hidden;
+            padding: 8rem 2rem 5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        /* Animated Gradient Background - Replaces Pink */
+        
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #1a0b2e 0%, #2d1b4e 25%, #6D42F5 50%, #E83D8F 75%, #F5A623 100%);
+            background-size: 300% 300%;
+            animation: animatedGradient 10s ease infinite;
+            z-index: -2;
+        }
+        
+        @keyframes animatedGradient {
+            0% {
+                background-position: 0% 0%;
+            }
+            25% {
+                background-position: 50% 25%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            75% {
+                background-position: 50% 75%;
+            }
+            100% {
+                background-position: 0% 100%;
+            }
+        }
+        /* Floating particles overlay */
+        
+        .page-header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.08) 2px, transparent 2px), radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.06) 1px, transparent 1px), radial-gradient(circle at 40% 80%, rgba(255, 255, 255, 0.05) 3px, transparent 3px);
+            background-size: 60px 60px, 40px 40px, 80px 80px;
+            pointer-events: none;
+            z-index: -1;
+            animation: floatParticles 20s linear infinite;
+        }
+        
+        @keyframes floatParticles {
+            0% {
+                background-position: 0 0, 0 0, 0 0;
+            }
+            100% {
+                background-position: 120px 120px, 80px 80px, 160px 160px;
+            }
+        }
+        
+        .page-header h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 2;
+            color: white;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            animation: fadeInDown 0.8s ease;
+        }
+        
+        .page-header h1 i {
+            margin-right: 0.5rem;
+            animation: iconPulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes iconPulse {
+            0%,
+            100% {
+                transform: scale(1);
+                text-shadow: 0 0 0px rgba(255, 255, 255, 0.5);
+            }
+            50% {
+                transform: scale(1.1);
+                text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+            }
+        }
+        
+        .page-header p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            position: relative;
+            z-index: 2;
+            color: rgba(255, 255, 255, 0.95);
+            animation: fadeInUp 0.8s ease;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .back-to-game-btn {
+            display: inline-block;
+            margin-top: 1.5rem;
+            padding: 0.8rem 2rem;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            font-size: 1rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .back-to-game-btn:hover {
+            background: white;
+            color: var(--accent);
+            transform: translateX(-5px) scale(1.02);
+            border-color: white;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        /* ========== DEMO SECTION - CIRCLE REMOVED ========== */
+        
+        .demo-animation {
+            background: transparent !important;
+            box-shadow: none !important;
+            border: none !important;
+            width: auto !important;
+            height: auto !important;
+        }
+        
+        .demo-animation::before,
+        .demo-animation::after {
+            display: none !important;
+        }
+        
+        .demo-cat {
+            position: relative !important;
+            animation: demoBounce 1s ease-in-out infinite;
+            cursor: pointer;
+            z-index: 2;
+        }
+        
+        .click-ring {
+            display: none !important;
+        }
+        
+        .demo-card {
+            background: var(--grad-brand);
+            border-radius: var(--r-xl);
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .demo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .demo-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent);
+            border-radius: 50%;
+            animation: orbFloat 6s ease-in-out infinite;
+        }
+        
+        @keyframes orbFloat {
+            0%,
+            100% {
+                transform: translate(0, 0);
+            }
+            50% {
+                transform: translate(-20px, -20px);
+            }
+        }
+        
+        .demo-cat {
+            font-size: 5rem !important;
+            filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.3));
+        }
+        /* ========== COMBO SYSTEM - FULLY STYLED ========== */
+        
+        .combo-section {
+            background: var(--surface);
+            border-radius: var(--r-xl);
+            padding: 2rem;
+            margin-bottom: 3rem;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .combo-section:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-3px);
+        }
+        
+        .combo-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--grad-brand);
+        }
+        
+        .combo-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .combo-header i {
+            font-size: 2rem;
+            color: var(--accent);
+            animation: fireFlicker 0.5s ease-in-out infinite alternate;
+        }
+        
+        @keyframes fireFlicker {
+            from {
+                text-shadow: 0 0 5px var(--accent);
+            }
+            to {
+                text-shadow: 0 0 20px var(--accent-2);
+            }
+        }
+        
+        .combo-header h2 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--text-1);
+        }
+        
+        .combo-description {
+            text-align: center;
+            font-size: 1rem;
+            color: var(--text-2);
+            margin-bottom: 2rem;
+        }
+        
+        .combo-visual {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+        
+        .combo-item {
+            text-align: center;
+            background: var(--bg);
+            padding: 1.2rem 1.8rem;
+            border-radius: var(--r-lg);
+            min-width: 120px;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border);
+            position: relative;
+        }
+        
+        .combo-item:hover {
+            transform: scale(1.08);
+            background: var(--accent-glow);
+            border-color: var(--accent);
+        }
+        
+        .combo-count {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent);
+            display: block;
+            font-family: 'Syne', sans-serif;
+        }
+        
+        .combo-points {
+            font-size: 0.9rem;
+            color: var(--text-2);
+            display: block;
+            margin-top: 0.3rem;
+        }
+        
+        .combo-arrow {
+            font-size: 1.5rem;
+            color: var(--accent);
+            animation: arrowPulse 1s ease-in-out infinite;
+        }
+        
+        @keyframes arrowPulse {
+            0%,
+            100% {
+                transform: translateX(0);
+                opacity: 0.6;
+            }
+            50% {
+                transform: translateX(5px);
+                opacity: 1;
+            }
+        }
+        
+        .combo-example {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin: 1.5rem 0;
+            padding: 1rem;
+            background: var(--accent-glow);
+            border-radius: var(--r-lg);
+        }
+        
+        .example-item {
+            text-align: center;
+            padding: 0.5rem 1rem;
+        }
+        
+        .example-label {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--text-3);
+            margin-bottom: 0.3rem;
+        }
+        
+        .example-value {
+            display: block;
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--accent);
+            font-family: 'Syne', sans-serif;
+        }
+        
+        .combo-note {
+            text-align: center;
+            margin-top: 1rem;
+            padding: 1rem;
+            background: var(--bg);
+            border-radius: var(--r-lg);
+            color: var(--text-2);
+            border-left: 4px solid var(--accent);
+        }
+        
+        .combo-note i {
+            color: var(--gold);
+            margin-right: 0.5rem;
+        }
+        /* Combo Multiplier Badge Animation */
+        
+        .combo-badge-demo {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, #ff6b6b, #feca57);
+            padding: 0.3rem 0.8rem;
+            border-radius: var(--r-pill);
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: white;
+            animation: badgePulse 1s ease-in-out infinite;
+        }
+        
+        @keyframes badgePulse {
+            0%,
+            100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+        /* ========== ENHANCED OBJECTIVE CARDS ========== */
+        
+        .objectives-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .objective-card {
+            background: var(--surface);
+            border-radius: var(--r-xl);
+            padding: 1.8rem 1.5rem;
+            text-align: center;
+            border: 1px solid var(--border);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .objective-card.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .objective-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--accent);
+        }
+        
+        .objective-emoji {
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 1rem;
+        }
+        /* ========== ENHANCED STEPS ========== */
+        
+        .step {
+            display: flex;
+            gap: 1.5rem;
+            background: var(--surface);
+            border-radius: var(--r-lg);
+            padding: 1.8rem;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateX(-15px);
+        }
+        
+        .step.in-view {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .step:hover {
+            transform: translateX(5px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--accent);
+        }
+        
+        .step-number {
+            font-family: 'Syne', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 800;
+            background: var(--grad-brand);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .step-tip {
+            background: var(--accent-glow);
+            padding: 0.5rem 1rem;
+            border-radius: var(--r-pill);
+            margin-top: 0.8rem;
+            font-size: 0.85rem;
+            display: inline-block;
+        }
+        /* ========== ENHANCED LEVEL TABLE ========== */
+        
+        .level-table-section {
+            margin-bottom: 4rem;
+        }
+        
+        .level-table-wrapper {
+            background: var(--surface);
+            border-radius: var(--r-xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border);
+        }
+        
+        .level-table-wrapper:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-3px);
+        }
+        
+        .level-table-header {
+            display: grid;
+            grid-template-columns: 80px 100px 1fr 1fr 1fr;
+            background: var(--grad-brand);
+            padding: 1.2rem 1rem;
+            color: white;
+            font-weight: 700;
+            font-family: 'Syne', sans-serif;
+        }
+        
+        .level-table-row {
+            display: grid;
+            grid-template-columns: 80px 100px 1fr 1fr 1fr;
+            padding: 1rem;
+            border-bottom: 1px solid var(--border);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .level-table-row:hover {
+            background: var(--accent-glow);
+            transform: translateX(5px);
+        }
+        
+        .level-badge {
+            width: 34px;
+            height: 34px;
+            background: var(--grad-brand);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+        
+        .level-badge.easy {
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
+        }
+        
+        .level-badge.medium {
+            background: linear-gradient(135deg, #FFC107, #FF8F00);
+        }
+        
+        .level-badge.hard {
+            background: linear-gradient(135deg, #FF9800, #E65100);
+        }
+        
+        .level-badge.expert {
+            background: linear-gradient(135deg, #f44336, #c62828);
+        }
+        
+        .level-badge.master {
+            background: linear-gradient(135deg, #9C27B0, #6A1B9A);
+        }
+        
+        .star-requirement {
+            text-align: center;
+            font-weight: 700;
+            padding: 0.3rem 0.5rem;
+            border-radius: var(--r-md);
+        }
+        
+        .star-target {
+            color: var(--gold);
+            background: rgba(245, 166, 35, 0.15);
+            font-weight: 800;
+        }
+        
+        .difficulty-legend {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+            padding: 1rem;
+            background: var(--surface-2);
+            border-radius: var(--r-lg);
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+            color: var(--text-2);
+        }
+        
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+        }
+        /* ========== TIPS ========== */
+        
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .tip-card {
+            background: var(--surface);
+            border-radius: var(--r-lg);
+            padding: 1.8rem;
+            border: 1px solid var(--border);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .tip-card.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .tip-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--accent);
+        }
+        
+        .tip-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        /* ========== FAQ ========== */
+        
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .faq-item {
+            background: var(--surface);
+            border-radius: var(--r-lg);
+            border: 1px solid var(--border);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        
+        .faq-item.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .faq-item:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--accent);
+        }
+        
+        .faq-question {
+            padding: 1.2rem 1.5rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: var(--surface-2);
+            transition: all 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            background: var(--accent-glow);
+            padding-left: 2rem;
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            padding: 0 1.5rem;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.3s ease;
+            background: var(--bg);
+            color: var(--text-2);
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+            padding: 1rem 1.5rem 1.5rem;
+        }
+        /* ========== STATS INFO ========== */
+        
+        .stats-info-section {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .stats-info-card {
+            flex: 1;
+            background: var(--surface);
+            border-radius: var(--r-xl);
+            padding: 1.8rem;
+            display: flex;
+            gap: 1.2rem;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .stats-info-card.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .stats-info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--accent);
+        }
+        
+        .stats-info-icon {
+            font-size: 2.5rem;
+        }
+        /* ========== CTA ========== */
+        
+        .cta-section {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.2rem 3rem;
+            background: var(--grad-brand);
+            color: white;
+            border-radius: var(--r-pill);
+            font-weight: 800;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-lg);
+            text-decoration: none;
+        }
+        
+        .cta-button:hover {
+            transform: scale(1.05) translateY(-4px);
+            gap: 1.5rem;
+        }
+        /* Responsive */
+        
+        @media (max-width: 768px) {
+            .objectives-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+            .demo-card {
+                flex-direction: column;
+                text-align: center;
+            }
+            .level-table-header,
+            .level-table-row {
+                grid-template-columns: 60px 80px 1fr 1fr 1fr;
+                font-size: 0.8rem;
+            }
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+            .combo-visual {
+                flex-direction: column;
+            }
+            .combo-arrow {
+                transform: rotate(90deg);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .objectives-grid {
+                grid-template-columns: 1fr;
+            }
+            .level-table-header,
+            .level-table-row {
+                grid-template-columns: 50px 70px 1fr 1fr 1fr;
+                font-size: 0.7rem;
+            }
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+        }
+        /* Ripple & Floating Score Effects */
+        
+        .click-ripple-effect {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: radial-gradient(circle, gold, transparent);
+            transform: translate(-50%, -50%) scale(0);
+            animation: rippleAnim 0.5s ease-out forwards;
+            pointer-events: none;
+        }
+        
+        @keyframes rippleAnim {
+            to {
+                transform: translate(-50%, -50%) scale(2.5);
+                opacity: 0;
+            }
+        }
+        
+        .floating-score {
+            position: fixed;
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: 1.4rem;
+            color: var(--gold);
+            pointer-events: none;
+            z-index: 10000;
+            animation: floatScore 0.7s ease-out forwards;
+        }
+        
+        @keyframes floatScore {
+            0% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-50px) scale(1.3);
+            }
+        }
+    </style>
+    <!-- ============================================================ -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loader">
+            <div class="loader-paw">
+                <span class="paw-main">🐾</span>
+                <span class="paw-dot"></span>
+                <span class="paw-dot"></span>
+                <span class="paw-dot"></span>
+            </div>
+            <p class="loader-label">Loading Guide</p>
+            <div class="loader-track">
+                <div class="loader-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cursor Glow -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <a href="index.html" class="logo">
+            <span class="logo-icon">🐱</span>
+            <span class="logo-text">CatTrap<em>Pro</em></span>
+        </a>
+        <ul class="nav-menu">
+            <li><a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="game.html" class="nav-link"><i class="fas fa-gamepad"></i> Play</a></li>
+            <li><a href="howto.html" class="nav-link active"><i class="fas fa-book-open"></i> How to Play</a></li>
+            <li><a href="halloffame.html" class="nav-link"><i class="fas fa-trophy"></i> Hall of Fame</a></li>
+            <li><a href="settings.html" class="nav-link"><i class="fas fa-cog"></i> Settings</a></li>
+            <li><a href="about.html" class="nav-link"><i class="fas fa-info-circle"></i> About</a></li>
+        </ul>
+        <div class="nav-right">
+            <button id="themeToggle" class="theme-btn" aria-label="Toggle theme">
+                <i class="fas fa-moon"></i>
+            </button>
+            <a href="game.html" class="nav-cta">Play Now <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </nav>
+
+    <!-- Page Header - PINK BACKGROUND REMOVED + ANIMATED GRADIENT -->
+    <div class="page-header">
+        <h1><i class="fas fa-book-open"></i> How to Play</h1>
+        <p>Master the art of cat trapping with these simple guidelines</p>
+        <a href="game.html" class="back-to-game-btn">
+            <i class="fas fa-gamepad"></i> Play Now →
+        </a>
+    </div>
+
+    <!-- Main Content -->
+    <main class="content-page">
+
+        <!-- QUICK DEMO SECTION -->
+        <div class="demo-section">
+            <div class="demo-card">
+                <div class="demo-animation">
+                    <div class="demo-cat">🐱</div>
+                </div>
+                <div class="demo-info">
+                    <h3>⚡ Quick Demo</h3>
+                    <p>Click on the moving cat as fast as you can! Each click gives you +1 point. The faster you click, the higher your score!</p>
+                    <div class="demo-badges">
+                        <span class="badge"><i class="fas fa-bolt"></i> Speed = Points</span>
+                        <span class="badge"><i class="fas fa-bullseye"></i> Accuracy = Stars</span>
+                        <span class="badge"><i class="fas fa-fire"></i> Combo = Multiplier</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MAIN OBJECTIVES -->
+        <div class="objectives-grid">
+            <div class="objective-card">
+                <div class="objective-emoji">🎯</div>
+                <h3>Main Objective</h3>
+                <p>Click the moving cat as many times as possible within <strong>30 seconds</strong></p>
+            </div>
+            <div class="objective-card">
+                <div class="objective-emoji">⭐</div>
+                <h3>Earn Stars</h3>
+                <p>Reach score targets to earn 1, 2, or 3 stars</p>
+            </div>
+            <div class="objective-card">
+                <div class="objective-emoji">🚀</div>
+                <h3>Level Up</h3>
+                <p>Get 3 stars to advance to the next level</p>
+            </div>
+            <div class="objective-card">
+                <div class="objective-emoji">🏆</div>
+                <h3>Hall of Fame</h3>
+                <p>Compete for the highest score on the leaderboard</p>
+            </div>
+        </div>
+
+        <!-- STEP BY STEP GUIDE -->
+        <div class="step-guide">
+            <div class="section-header align-left">
+                <p class="section-eyebrow">Simple to Learn</p>
+                <h2 class="section-title">How to play in 5 steps</h2>
+            </div>
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">01</div>
+                    <div class="step-content">
+                        <h4><i class="fas fa-play-circle"></i> Start the Game</h4>
+                        <p>Click the <strong>"Start Game"</strong> button to begin. The cat will start moving randomly around the game area.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">02</div>
+                    <div class="step-content">
+                        <h4><i class="fas fa-mouse-pointer"></i> Catch the Cat</h4>
+                        <p>Click on the cat as quickly as possible. Each successful click increases your score by 1 point.</p>
+                        <div class="step-tip">💡 Tip: Build combos by clicking rapidly without missing!</div>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">03</div>
+                    <div class="step-content">
+                        <h4><i class="fas fa-hourglass-half"></i> Watch the Timer</h4>
+                        <p>You have <strong>30 seconds</strong> per level. The timer turns red when time is running low!</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">04</div>
+                    <div class="step-content">
+                        <h4><i class="fas fa-star"></i> Earn Stars</h4>
+                        <p>Reach the score targets to earn stars. Get 3 stars to advance to the next level!</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">05</div>
+                    <div class="step-content">
+                        <h4><i class="fas fa-rocket"></i> Level Up</h4>
+                        <p>Each new level makes the cat move faster! Can you reach level 10?</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- COMBO SYSTEM - FULLY STYLED & CORRECTED      -->
+        <!-- ============================================ -->
+        <div class="combo-section">
+            <div class="combo-header">
+                <i class="fas fa-fire"></i>
+                <h2>Combo System</h2>
+                <i class="fas fa-chart-line"></i>
+            </div>
+
+            <p class="combo-description">
+                Click rapidly without missing to build a <strong>combo multiplier</strong>!
+            </p>
+
+            <div class="combo-visual">
+                <div class="combo-item">
+                    <span class="combo-count">1</span>
+                    <span class="combo-points">= 1 point</span>
+                </div>
+                <i class="fas fa-arrow-right combo-arrow"></i>
+                <div class="combo-item">
+                    <span class="combo-count">2</span>
+                    <span class="combo-points">= 2 points</span>
+                </div>
+                <i class="fas fa-arrow-right combo-arrow"></i>
+                <div class="combo-item">
+                    <span class="combo-count">5</span>
+                    <span class="combo-points">= <strong>5x multiplier!</strong></span>
+                </div>
+                <i class="fas fa-arrow-right combo-arrow"></i>
+                <div class="combo-item">
+                    <span class="combo-count">10</span>
+                    <span class="combo-points">= <strong>10x MAX!</strong></span>
+                </div>
+            </div>
+
+            <div class="combo-example">
+                <div class="example-item">
+                    <span class="example-label">Normal click:</span>
+                    <span class="example-value">+1 point</span>
+                </div>
+                <div class="example-item">
+                    <span class="example-label">5x Combo:</span>
+                    <span class="example-value">+5 points</span>
+                </div>
+                <div class="example-item">
+                    <span class="example-label">10x Combo:</span>
+                    <span class="example-value">+10 points</span>
+                </div>
+            </div>
+
+            <p class="combo-note">
+                <i class="fas fa-lightbulb"></i> The higher your combo, the more points you earn per click!
+                <span class="combo-badge-demo">Max combo is 10x!</span>
+            </p>
+        </div>
+
+        <!-- LEVEL REQUIREMENTS TABLE -->
+        <div class="level-table-section">
+            <div class="section-header">
+                <p class="section-eyebrow">Progression</p>
+                <h2 class="section-title">Level Requirements</h2>
+                <p class="section-sub">Complete each level by reaching the 3-star target. The cat gets faster every level!</p>
+            </div>
+            <div class="level-table-wrapper">
+                <div class="level-table-header">
+                    <span>LEVEL</span>
+                    <span>SPEED</span>
+                    <span>⭐ 1 Star</span>
+                    <span>⭐⭐ 2 Stars</span>
+                    <span>⭐⭐⭐ 3 Stars</span>
+                </div>
+                <div class="level-table-body">
+                    <div class="level-table-row">
+                        <div class="level-number"><span class="level-badge easy">1</span></div>
+                        <div><i class="fas fa-turtle"></i> 1.0s</div>
+                        <div class="star-requirement">5</div>
+                        <div class="star-requirement">8</div>
+                        <div class="star-requirement star-target">12 🎯</div>
+                    </div>
+                    <div class="level-table-row">
+                        <div class="level-number"><span class="level-badge easy">2</span></div>
+                        <div><i class="fas fa-dog"></i> 0.9s</div>
+                        <div class="star-requirement">7</div>
+                        <div class="star-requirement">11</div>
+                        <div class="star-requirement star-target">16 🎯</div>
+                    </div>
+                    <div class="level-table-row">
+                        <div class="level-number"><span class="level-badge medium">3</span></div>
+                        <div><i class="fas fa-dog"></i> 0.8s</div>
+                        <div class="star-requirement">9</div>
+                        <div class="star-requirement">14</div>
+                        <div class="star-requirement star-target">20 🎯</div>
+                    </div>
+                    <div class="level-table-row">
+                        <div class="level-number"><span class="level-badge medium">4</span></div>
+                        <div><i class="fas fa-dog"></i> 0.7s</div>
+                        <div class="star-requirement">11</div>
+                        <div class="star-requirement">17</div>
+                        <div class="star-requirement star-target">24 🎯</div>
+                    </div>
+                    <div class="level-table-row">
+                        <div class="level-number"><span class="level-badge hard">5</span></div>
+                        <div><i class="fas fa-bolt"></i> 0.6s</div>
+                        <div class="star-requirement">13</div>
+                        <div class="star-requirement">20</div>
+                        <div class="star-requirement star-target">28 🎯</div>
+                    </div>
+                    <div class="level-table-row">
+                        <div class="level-number"><span class="level-badge hard">6</span></div>
+                        <div><i class="fas fa-bolt"></i> 0.5s</div>
+                        <div class="star-requirement">15</div>
+                        <div class="star-requirement">23</div>
+                        <div class="star-requirement star-target">32 🎯</div>
+                    </div>
+                    <div class="level-table-row">
+                        <div class="level-number"><span class="level-badge expert">7</span></div>
+                        <div><i class="fas fa-rocket"></i> 0.4s</div>
+                        <div class="star-requirement">17</div>
+                        <div class="star-requirement">26</div>
+                        <div class="star-requirement star-target">36 🎯</div>
+                    </div>
+                    <div class="level-table-row">
+                        <div class="level-number"><span class="level-badge expert">8</span></div>
+                        <div><i class="fas fa-rocket"></i> 0.3s</div>
+                        <div class="star-requirement">19</div>
+                        <div class="star-requirement">29</div>
+                        <div class="star-requirement star-target">40 🎯</div>
+                    </div>
+                    <div class="level-table-row">
+                        <div class="level-number"><span class="level-badge master">9</span></div>
+                        <div><i class="fas fa-space-shuttle"></i> 0.2s</div>
+                        <div class="star-requirement">21</div>
+                        <div class="star-requirement">32</div>
+                        <div class="star-requirement star-target">44 🎯</div>
+                    </div>
+                    <div class="level-table-row">
+                        <div class="level-number"><span class="level-badge master">10</span></div>
+                        <div><i class="fas fa-meteor"></i> 0.15s</div>
+                        <div class="star-requirement">23</div>
+                        <div class="star-requirement">35</div>
+                        <div class="star-requirement star-target">48 🎯</div>
+                    </div>
+                </div>
+            </div>
+            <div class="difficulty-legend">
+                <div class="legend-item">
+                    <div class="legend-color easy"></div><span>Easy (1-2)</span></div>
+                <div class="legend-item">
+                    <div class="legend-color medium"></div><span>Medium (3-4)</span></div>
+                <div class="legend-item">
+                    <div class="legend-color hard"></div><span>Hard (5-6)</span></div>
+                <div class="legend-item">
+                    <div class="legend-color expert"></div><span>Expert (7-8)</span></div>
+                <div class="legend-item">
+                    <div class="legend-color master"></div><span>Master (9-10)</span></div>
+            </div>
+        </div>
+
+        <!-- PRO TIPS -->
+        <div class="tips-section">
+            <div class="section-header">
+                <p class="section-eyebrow">Expert Advice</p>
+                <h2 class="section-title">💡 Pro Tips</h2>
+            </div>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <div class="tip-icon">🎯</div>
+                    <h4>Stay Focused</h4>
+                    <p>Anticipate the cat's movement pattern.</p>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-icon">⚡</div>
+                    <h4>Build Combos</h4>
+                    <p>Click rapidly without missing for multiplier!</p>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-icon">🎨</div>
+                    <h4>Customize Cat</h4>
+                    <p>Change color & size in Settings.</p>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-icon">⏱️</div>
+                    <h4>Timer Rush</h4>
+                    <p>When time is low, click frantically!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ -->
+        <div class="faq-section">
+            <div class="section-header">
+                <h2 class="section-title">❓ Frequently Asked Questions</h2>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question"><i class="fas fa-question-circle"></i> How do I unlock new levels?</div>
+                    <div class="faq-answer">Earn 3 stars on your current level. The game auto-advances!</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question"><i class="fas fa-question-circle"></i> Why does the cat move faster?</div>
+                    <div class="faq-answer">Each level increases speed. Level 10 is lightning fast!</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question"><i class="fas fa-question-circle"></i> Is my progress saved?</div>
+                    <div class="faq-answer">Yes! localStorage saves everything automatically.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question"><i class="fas fa-question-circle"></i> What's the max combo?</div>
+                    <div class="faq-answer">10x multiplier! Keep clicking without missing.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- STATS INFO -->
+        <div class="stats-info-section">
+            <div class="stats-info-card">
+                <div class="stats-info-icon">📊</div>
+                <div>
+                    <h4>Your Progress is Saved</h4>
+                    <p>High scores & stars persist locally.</p>
+                </div>
+            </div>
+            <div class="stats-info-card">
+                <div class="stats-info-icon">🔒</div>
+                <div>
+                    <h4>No Account Needed</h4>
+                    <p>100% free, no ads, pure fun.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CALL TO ACTION -->
+        <div class="cta-section">
+            <a href="game.html" class="cta-button">
+                <i class="fas fa-play"></i> Ready to Play? Start Now!
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <span class="footer-logo">🐱 CatTrap<em>Pro</em></span>
+                <p>Reflex-based cat catching. Pure HTML/CSS/JS.</p>
+            </div>
+            <div class="footer-nav">
+                <h5>Pages</h5>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="game.html">Play Game</a></li>
+                    <li><a href="howto.html">How to Play</a></li>
+                    <li><a href="halloffame.html">Hall of Fame</a></li>
+                    <li><a href="settings.html">Settings</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </div>
+            <div class="footer-meta">
+                <p> Cat Trap Pro</p>
+                <p class="footer-quote">"Every cat is a master of the art of relaxation."</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/theme.js"></script>
+    <script>
+        // Hide loading screen
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                var loader = document.getElementById('loadingScreen');
+                if (loader) loader.classList.add('hidden');
+            }, 600);
+        });
+
+        // Cursor glow effect
+        var glow = document.getElementById('cursorGlow');
+        if (glow) {
+            document.addEventListener('mousemove', function(e) {
+                glow.style.left = e.clientX + 'px';
+                glow.style.top = e.clientY + 'px';
+            });
+        }
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            var navbar = document.getElementById('navbar');
+            if (navbar) {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            }
+        });
+
+        // Theme toggle
+        var themeBtn = document.getElementById('themeToggle');
+        if (themeBtn) {
+            themeBtn.addEventListener('click', function() {
+                var hasDark = document.documentElement.getAttribute('data-theme') === 'dark';
+                if (hasDark) {
+                    document.documentElement.removeAttribute('data-theme');
+                } else {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                }
+            });
+        }
+
+        // FAQ Toggle
+        document.querySelectorAll('.faq-question').forEach(function(question) {
+            question.addEventListener('click', function() {
+                var parent = this.parentElement;
+                document.querySelectorAll('.faq-item').forEach(function(item) {
+                    if (item !== parent) {
+                        item.classList.remove('active');
+                    }
+                });
+                parent.classList.toggle('active');
+            });
+        });
+
+        // Demo cat click effect
+        var demoCat = document.querySelector('.demo-cat');
+        if (demoCat) {
+            demoCat.addEventListener('click', function(e) {
+                e.stopPropagation();
+
+                this.style.transform = 'scale(1.2)';
+                setTimeout(function() {
+                    if (demoCat) demoCat.style.transform = '';
+                }, 150);
+
+                var container = this.parentElement;
+                var rect = container.getBoundingClientRect();
+                var clickX = e.clientX - rect.left;
+                var clickY = e.clientY - rect.top;
+
+                var ripple = document.createElement('div');
+                ripple.className = 'click-ripple-effect';
+                ripple.style.left = clickX + 'px';
+                ripple.style.top = clickY + 'px';
+                container.appendChild(ripple);
+                setTimeout(function() {
+                    ripple.remove();
+                }, 500);
+
+                var score = document.createElement('div');
+                score.className = 'floating-score';
+                score.textContent = '+1';
+                score.style.left = e.clientX + 'px';
+                score.style.top = e.clientY + 'px';
+                document.body.appendChild(score);
+                setTimeout(function() {
+                    score.remove();
+                }, 700);
+            });
+        }
+
+        // Intersection Observer
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        document.querySelectorAll('.objective-card, .step, .tip-card, .faq-item, .stats-info-card').forEach(function(el) {
+            observer.observe(el);
+        });
+    </script>
+</body>
+
+</html>

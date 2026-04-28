@@ -1,0 +1,1575 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Cat Trap Pro — Settings | Customize Game</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- FAVICON -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext x='50' y='50' font-size='70' text-anchor='middle' dy='.35em' fill='%236D42F5'%3E🐱%3C/text%3E%3C/svg%3E">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext x='50' y='50' font-size='70' text-anchor='middle' dy='.35em' fill='%236D42F5'%3E🐱%3C/text%3E%3C/svg%3E">
+
+    <!-- PAGE-SPECIFIC STYLES -->
+    <style>
+        .page-header {
+            background: transparent !important;
+            position: relative;
+            overflow: hidden;
+            padding: 8rem 2rem 5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #1a0b2e 0%, #2d1b4e 25%, #6D42F5 50%, #E83D8F 75%, #F5A623 100%);
+            background-size: 300% 300%;
+            animation: animatedGradient 10s ease infinite;
+            z-index: -2;
+        }
+        
+        @keyframes animatedGradient {
+            0% {
+                background-position: 0% 0%;
+            }
+            25% {
+                background-position: 50% 25%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            75% {
+                background-position: 50% 75%;
+            }
+            100% {
+                background-position: 0% 100%;
+            }
+        }
+        
+        .page-header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.08) 2px, transparent 2px), radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+            background-size: 60px 60px, 40px 40px;
+            pointer-events: none;
+            z-index: -1;
+            animation: floatParticles 20s linear infinite;
+        }
+        
+        @keyframes floatParticles {
+            0% {
+                background-position: 0 0, 0 0;
+            }
+            100% {
+                background-position: 120px 120px, 80px 80px;
+            }
+        }
+        
+        .page-header h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: white;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            animation: fadeInDown 0.8s ease;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .page-header h1 i {
+            margin-right: 0.5rem;
+            animation: iconPulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes iconPulse {
+            0%,
+            100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+        
+        .page-header p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.95);
+            animation: fadeInUp 0.8s ease;
+            position: relative;
+            z-index: 2;
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .back-to-game-btn {
+            display: inline-block;
+            margin-top: 1.5rem;
+            padding: 0.8rem 2rem;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            color: white;
+            border-radius: 50px;
+            font-weight: 600;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            transition: all 0.3s ease;
+        }
+        
+        .back-to-game-btn:hover {
+            background: white;
+            color: var(--accent);
+            transform: translateX(-5px);
+        }
+        
+        .settings-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            animation: slideUp 0.6s ease forwards;
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .settings-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+        
+        .settings-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        
+        .settings-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+        
+        .settings-card:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+        
+        .settings-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .color-preset,
+        .personality-option,
+        .difficulty-option {
+            transition: all 0.2s ease;
+        }
+        
+        .color-preset:hover,
+        .personality-option:hover,
+        .difficulty-option:hover {
+            transform: scale(1.05);
+        }
+        
+        .song-selector select {
+            padding: 0.5rem 1rem;
+            border-radius: var(--r-md);
+            border: 1.5px solid var(--accent);
+            background: var(--bg);
+            color: var(--text-1);
+            font-size: 0.9rem;
+            cursor: pointer;
+            outline: none;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+        
+        .song-selector select:hover,
+        .song-selector select:focus {
+            background: var(--accent);
+            color: white;
+        }
+        
+        .sound-test {
+            margin-top: 1rem;
+            text-align: right;
+        }
+        
+        .setting-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 0;
+            border-bottom: 1px solid var(--border);
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .setting-item:last-child {
+            border-bottom: none;
+        }
+        
+        .setting-info {
+            flex: 1;
+            min-width: 150px;
+        }
+        
+        .setting-name {
+            display: block;
+            font-weight: 600;
+            color: var(--text-1);
+            margin-bottom: 4px;
+        }
+        
+        .setting-description {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--text-3);
+        }
+        
+        .volume-control-with-buttons {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            align-items: center;
+            gap: 0.8rem;
+            width: 100%;
+            max-width: 320px;
+        }
+        
+        .volume-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 2px solid var(--accent);
+            background: var(--bg);
+            color: var(--accent);
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all var(--t-base);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .volume-btn:hover {
+            background: var(--accent);
+            color: white;
+            transform: scale(1.05);
+        }
+        
+        .volume-display {
+            min-width: 55px;
+            text-align: center;
+            font-weight: 700;
+            color: var(--accent);
+            font-size: 1.1rem;
+            background: var(--bg);
+            padding: 0.3rem 0.5rem;
+            border-radius: var(--r-pill);
+            grid-column: 3;
+            grid-row: 1;
+        }
+        
+        .volume-unit {
+            font-size: 0.7rem;
+        }
+        
+        .volume-slider-wrapper {
+            width: 100%;
+            grid-column: 2;
+            grid-row: 1;
+        }
+        
+        .volume-slider-wrapper input {
+            width: 100%;
+            height: 4px;
+            border-radius: var(--r-pill);
+            background: var(--border);
+            outline: none;
+            -webkit-appearance: none;
+        }
+        
+        .volume-slider-wrapper input::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--accent);
+            cursor: pointer;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+            transition: all 0.2s ease;
+        }
+        
+        .volume-slider-wrapper input::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+        }
+        
+        .btn-test-sound {
+            margin-top: 1rem;
+            padding: 0.6rem 1.2rem;
+            background: var(--bg);
+            border: 1.5px solid var(--accent);
+            border-radius: var(--r-pill);
+            color: var(--accent);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--t-base);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-test-sound:hover {
+            background: var(--accent);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .cat-preview-container {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            background: var(--bg);
+            border-radius: var(--r-xl);
+            border: 2px dashed var(--accent);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cat-preview {
+            position: relative;
+            font-size: 5rem;
+            margin-bottom: 0.5rem;
+            display: inline-block;
+        }
+        
+        #previewCat {
+            display: inline-block;
+            transition: all var(--t-spring);
+            filter: drop-shadow(0 0 10px var(--accent-glow));
+        }
+        
+        .preview-glow {
+            position: absolute;
+            inset: -20px;
+            background: radial-gradient(circle, var(--accent-glow), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        
+        .cat-preview-container:hover .preview-glow {
+            opacity: 1;
+        }
+        
+        .color-presets {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+        }
+        
+        .color-preset {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 2px solid var(--border);
+            cursor: pointer;
+            transition: all var(--t-spring);
+        }
+        
+        .color-preset:hover {
+            transform: scale(1.1);
+            border-color: var(--accent);
+        }
+        
+        .color-preset.active {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 2px var(--accent-glow);
+        }
+        
+        .custom-color-picker {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+        
+        .custom-color-picker input {
+            width: 50px;
+            height: 40px;
+            border: 2px solid var(--accent);
+            border-radius: var(--r-md);
+            cursor: pointer;
+            background: var(--bg);
+            transition: all 0.2s ease;
+        }
+        
+        .custom-color-picker input:hover {
+            transform: scale(1.05);
+        }
+        
+        .custom-color-picker span {
+            font-family: monospace;
+            font-size: 0.85rem;
+            color: var(--accent);
+            background: var(--bg);
+            padding: 0.3rem 0.6rem;
+            border-radius: var(--r-md);
+            border: 1px solid var(--border);
+        }
+        
+        .size-control {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .size-control input {
+            width: 150px;
+            height: 4px;
+            border-radius: var(--r-pill);
+            background: var(--border);
+            outline: none;
+            -webkit-appearance: none;
+        }
+        
+        .size-control input::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--accent);
+            cursor: pointer;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+            transition: all 0.2s ease;
+        }
+        
+        .size-control input::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+        }
+        
+        .size-control span {
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            color: var(--accent);
+            min-width: 45px;
+        }
+        
+        .size-unit {
+            font-size: 0.7rem;
+            margin-left: 0.2rem;
+        }
+        
+        .personality-buttons,
+        .difficulty-buttons {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+        }
+        
+        .personality-option,
+        .difficulty-option {
+            padding: 0.5rem 1rem;
+            border: 1.5px solid var(--border);
+            background: transparent;
+            color: var(--text-1);
+            border-radius: var(--r-pill);
+            cursor: pointer;
+            transition: all var(--t-base);
+            font-size: 0.85rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        
+        .personality-option i,
+        .difficulty-option i {
+            color: var(--accent);
+        }
+        
+        .personality-option:hover,
+        .difficulty-option:hover {
+            border-color: var(--accent);
+            background: var(--accent-glow);
+        }
+        
+        .personality-option.active,
+        .difficulty-option.active {
+            border-color: var(--accent);
+            background: var(--accent);
+            color: white;
+        }
+        
+        .personality-option.active i,
+        .difficulty-option.active i {
+            color: white;
+        }
+        
+        .timer-selector select {
+            padding: 0.5rem 1rem;
+            border-radius: var(--r-md);
+            border: 1.5px solid var(--accent);
+            background: var(--bg);
+            color: var(--text-1);
+            font-size: 0.9rem;
+            cursor: pointer;
+            outline: none;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+        
+        .timer-selector select:hover {
+            background: var(--accent);
+            color: white;
+        }
+        
+        .level-selector {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .level-selector input {
+            width: 70px;
+            padding: 0.5rem;
+            text-align: center;
+            border: 1.5px solid var(--accent);
+            border-radius: var(--r-md);
+            background: var(--bg);
+            color: var(--text-1);
+            font-weight: 600;
+            font-size: 1rem;
+        }
+        
+        .level-selector-buttons {
+            display: flex;
+            gap: 0.3rem;
+        }
+        
+        .level-minus,
+        .level-plus {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 1.5px solid var(--accent);
+            background: var(--bg);
+            color: var(--accent);
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all var(--t-base);
+        }
+        
+        .level-minus:hover,
+        .level-plus:hover {
+            background: var(--accent);
+            color: white;
+            transform: scale(1.05);
+        }
+        
+        .color-picker {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .color-picker input {
+            width: 45px;
+            height: 40px;
+            border: 2px solid var(--accent);
+            border-radius: var(--r-md);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .color-picker input:hover {
+            transform: scale(1.05);
+        }
+        
+        .color-picker span {
+            font-family: monospace;
+            font-size: 0.85rem;
+            color: var(--text-2);
+        }
+        
+        .settings-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn-save-settings {
+            padding: 0.8rem 1.8rem;
+            background: var(--grad-brand);
+            color: white;
+            border: none;
+            border-radius: var(--r-pill);
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all var(--t-base);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-save-settings:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px var(--accent-glow);
+        }
+        
+        .btn-reset-settings {
+            padding: 0.8rem 1.8rem;
+            background: transparent;
+            color: var(--text-1);
+            border: 2px solid var(--accent);
+            border-radius: var(--r-pill);
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all var(--t-base);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-reset-settings:hover {
+            background: var(--accent);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .btn-back-to-game {
+            padding: 0.8rem 1.8rem;
+            background: var(--surface);
+            color: var(--text-1);
+            border: 2px solid var(--border);
+            border-radius: var(--r-pill);
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all var(--t-base);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-back-to-game:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+        
+        .settings-status {
+            text-align: center;
+            padding: 0.8rem;
+            border-radius: var(--r-lg);
+            margin-top: 1rem;
+            font-weight: 500;
+            display: none;
+            animation: fadeInUp 0.3s ease;
+        }
+        
+        .settings-status.success {
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--green);
+            border: 1px solid var(--green);
+        }
+        
+        .settings-status.warning {
+            background: rgba(245, 158, 11, 0.15);
+            color: #f59e0b;
+            border: 1px solid #f59e0b;
+        }
+        
+        .settings-status.info {
+            background: rgba(59, 130, 246, 0.15);
+            color: #3b82f6;
+            border: 1px solid #3b82f6;
+        }
+        
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+            .setting-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.8rem;
+            }
+            .volume-control-with-buttons {
+                grid-template-columns: auto auto auto;
+                width: auto;
+                max-width: none;
+            }
+            .color-presets,
+            .personality-buttons,
+            .difficulty-buttons {
+                justify-content: flex-start;
+                width: 100%;
+            }
+            .settings-actions {
+                flex-direction: column;
+            }
+            .btn-save-settings,
+            .btn-reset-settings,
+            .btn-back-to-game {
+                width: 100%;
+                justify-content: center;
+            }
+            .size-control {
+                width: 100%;
+            }
+            .custom-color-picker,
+            .color-picker {
+                width: 100%;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .page-header {
+                padding: 6rem 1.5rem 4rem;
+            }
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+            .settings-container {
+                padding: 0 1rem;
+            }
+            .settings-card {
+                padding: 1.5rem;
+            }
+            .volume-control-with-buttons {
+                grid-template-columns: 1fr;
+            }
+            .volume-btn {
+                width: 32px;
+                height: 32px;
+                font-size: 1rem;
+            }
+            .volume-display {
+                grid-column: 1;
+                grid-row: auto;
+            }
+            .volume-slider-wrapper {
+                grid-column: 1;
+                grid-row: auto;
+            }
+            .cat-preview {
+                font-size: 3rem;
+            }
+            .color-presets,
+            .personality-buttons,
+            .difficulty-buttons {
+                gap: 0.3rem;
+            }
+            .color-preset {
+                width: 32px;
+                height: 32px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loader">
+            <div class="loader-paw">
+                <span class="paw-main">🐾</span>
+                <span class="paw-dot"></span>
+                <span class="paw-dot"></span>
+                <span class="paw-dot"></span>
+            </div>
+            <p class="loader-label">Loading Settings</p>
+            <div class="loader-track">
+                <div class="loader-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cursor Effects -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+    <div class="cursor-trail" id="cursorTrail"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <a href="index.html" class="logo">
+            <span class="logo-icon">🐱</span>
+            <span class="logo-text">CatTrap<em>Pro</em></span>
+        </a>
+        <ul class="nav-menu">
+            <li><a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="game.html" class="nav-link"><i class="fas fa-gamepad"></i> Play</a></li>
+            <li><a href="howto.html" class="nav-link"><i class="fas fa-book-open"></i> How to Play</a></li>
+            <li><a href="halloffame.html" class="nav-link"><i class="fas fa-trophy"></i> Hall of Fame</a></li>
+            <li><a href="settings.html" class="nav-link active"><i class="fas fa-cog"></i> Settings</a></li>
+            <li><a href="about.html" class="nav-link"><i class="fas fa-info-circle"></i> About</a></li>
+        </ul>
+        <div class="nav-right">
+            <button id="themeToggle" class="theme-btn"><i class="fas fa-moon"></i></button>
+            <a href="game.html" class="nav-cta">Play Now <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <h1><i class="fas fa-sliders-h"></i> Game Settings</h1>
+        <p>Customize your gaming experience</p>
+        <a href="game.html" class="back-to-game-btn">
+            <i class="fas fa-arrow-left"></i> Back to Game
+        </a>
+    </div>
+
+    <!-- Main Content -->
+    <main class="content-page">
+        <div class="settings-container">
+
+            <!-- MUSIC & SOUND SETTINGS CARD -->
+            <div class="settings-card">
+                <div class="settings-card-header">
+                    <div class="settings-icon-wrapper">🎵</div>
+                    <h2>Music & Sound</h2>
+                </div>
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <span class="setting-name">Master Sound</span>
+                        <span class="setting-description">Turn all sounds ON/OFF</span>
+                    </div>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="masterSound" checked>
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <span class="setting-name">Background Music</span>
+                        <span class="setting-description">Play calming background music</span>
+                    </div>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="bgMusic" checked>
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <span class="setting-name">Select Song</span>
+                        <span class="setting-description">Choose your background music</span>
+                    </div>
+                    <div class="song-selector">
+                        <select id="songSelect">
+                            <option value="song1">🎵 Calm Piano</option>
+                            <option value="song2">🎸 Acoustic Guitar</option>
+                            <option value="song3">🎹 Lo-fi Beats</option>
+                            <option value="song4">🎻 Orchestral</option>
+                            <option value="song5">🎧 Electronic</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <span class="setting-name">Volume Level</span>
+                        <span class="setting-description">Adjust music volume</span>
+                    </div>
+                    <div class="volume-control-with-buttons">
+                        <button class="volume-btn" id="volumeDown">−</button>
+                        <div class="volume-slider-wrapper">
+                            <input type="range" id="volumeSlider" min="0" max="100" value="70">
+                        </div>
+                        <div class="volume-display">
+                            <span id="volumeValue">70</span><span class="volume-unit">%</span>
+                        </div>
+                        <button class="volume-btn" id="volumeUp">+</button>
+                    </div>
+                </div>
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <span class="setting-name">Click Sound</span>
+                        <span class="setting-description">Sound when you catch the cat</span>
+                    </div>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="clickSound" checked>
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+                <div class="sound-test">
+                    <button id="testSoundBtn" class="btn-test-sound">
+                        <i class="fas fa-headphones"></i> Test Sound
+                    </button>
+                </div>
+            </div>
+
+            <!-- CAT CUSTOMIZATION CARD -->
+            <div class="settings-card">
+                <div class="settings-card-header">
+                    <div class="settings-icon-wrapper">🐱</div>
+                    <h2>Cat Customization</h2>
+                </div>
+                <div class="cat-preview-container">
+                    <div class="cat-preview" id="catPreview">
+                        <span id="previewCat">🐱</span>
+                        <div class="preview-glow"></div>
+                    </div>
+                    <p>Your cat will look like this in-game</p>
+                </div>
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <span class="setting-name">Cat Color Presets</span>
+                        <span class="setting-description">Choose a predefined color</span>
+                    </div>
+                    <div class="color-presets">
+                        <button class="color-preset" data-color="orange" style="background: #FFA500;"></button>
+                        <button class="color-preset" data-color="gray" style="background: #808080;"></button>
+                        <button class="color-preset" data-color="brown" style="background: #8B4513;"></button>
+                        <button class="color-preset" data-color="white" style="background: #FFFFFF; border: 1px solid #ccc;"></button>
+                        <button class="color-preset" data-color="black" style="background: #000000;"></button>
+                    </div>
+                </div>
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <span class="setting-name">Custom Color</span>
+                        <span class="setting-description">Pick any color you like</span>
+                    </div>
+                    <div class="custom-color-picker">
+                        <input type="color" id="catColorPicker" value="#FFA500">
+                        <span id="colorHex">#FFA500</span>
+                    </div>
+                </div>
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <span class="setting-name">Cat Size</span>
+                        <span class="setting-description">Adjust cat size (small to large)</span>
+                    </div>
+                    <div class="size-control">
+                        <input type="range" id="catSize" min="2" max="8" value="4.5" step="0.5">
+                        <span id="sizeValue">4.5</span>
+                        <span class="size-unit">rem</span>
+                    </div>
+                </div>
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <span class="setting-name">Cat Personality</span>
+                        <span class="setting-description">Affects movement style</span>
+                    </div>
+                    <div class="personality-buttons">
+                        <button class="personality-option active" data-personality="normal"><i class="fas fa-smile"></i> Normal</button>
+                        <button class="personality-option" data-personality="lazy"><i class="fas fa-bed"></i> Lazy</button>
+                        <button class="personality-option" data-personality="hyper"><i class="fas fa-bolt"></i> Hyper</button>
+                        <button class="personality-option" data-personality="shy"><i class="fas fa-eye-slash"></i> Shy</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TIMER SETTINGS CARD -->
+            <div class="settings-card">
+                <div class="settings-card-header">
+                    <div class="settings-icon-wrapper">⏱️</div>
+                    <h2>Timer Settings</h2>
+                </div>
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <span class="setting-name">Timer Duration</span>
+                        <span class="setting-description">Set time per level (seconds)</span>
+                    </div>
+                    <div class="timer-selector">
+                        <select id="timerDuration">
+                            <option value="15">15 seconds</option>
+                            <option value="20">20 seconds</option>
+                            <option value="25">25 seconds</option>
+                            <option value="30" selected>30 seconds</option>
+                            <option value="35">35 seconds</option>
+                            <option value="40">40 seconds</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <span class="setting-name">Timer Warning</span>
+                        <span class="setting-description">Show warning when time is low</span>
+                    </div>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="timerWarning" checked>
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <span class="setting-name">Warning Time</span>
+                        <span class="setting-description">When to show warning (seconds)</span>
+                    </div>
+                    <div class="timer-selector">
+                        <select id="warningTime">
+                            <option value="5">5 seconds left</option>
+                            <option value="10" selected>10 seconds left</option>
+                            <option value="15">15 seconds left</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <span class="setting-name">Warning Color</span>
+                        <span class="setting-description">Color for low time warning</span>
+                    </div>
+                    <div class="color-picker">
+                        <input type="color" id="warningColor" value="#ff4444">
+                        <span id="warningColorHex">#ff4444</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GAMEPLAY SETTINGS CARD -->
+            <div class="settings-card">
+                <div class="settings-card-header">
+                    <div class="settings-icon-wrapper">🎮</div>
+                    <h2>Gameplay Settings</h2>
+                </div>
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <span class="setting-name">Difficulty</span>
+                        <span class="setting-description">Adjust game challenge</span>
+                    </div>
+                    <div class="difficulty-buttons">
+                        <button class="difficulty-option" data-difficulty="easy"><i class="fas fa-seedling"></i> Easy</button>
+                        <button class="difficulty-option active" data-difficulty="normal"><i class="fas fa-chart-line"></i> Normal</button>
+                        <button class="difficulty-option" data-difficulty="hard"><i class="fas fa-skull"></i> Hard</button>
+                    </div>
+                </div>
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <span class="setting-name">Starting Level</span>
+                        <span class="setting-description">Begin from level</span>
+                    </div>
+                    <div class="level-selector">
+                        <button class="level-minus" id="levelMinus">−</button>
+                        <input type="number" id="startLevel" min="1" max="10" value="1">
+                        <button class="level-plus" id="levelPlus">+</button>
+                    </div>
+                </div>
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <span class="setting-name">Show Timer</span>
+                        <span class="setting-description">Display timer during game</span>
+                    </div>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="showTimer" checked>
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <span class="setting-name">Show Score</span>
+                        <span class="setting-description">Display score during game</span>
+                    </div>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="showScore" checked>
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <span class="setting-name">Particle Effects</span>
+                        <span class="setting-description">Show click particles</span>
+                    </div>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="particleEffects" checked>
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- ACTION BUTTONS -->
+            <div class="settings-actions">
+                <button id="saveSettingsBtn" class="btn-save-settings">
+                    <i class="fas fa-save"></i> Save Settings
+                </button>
+                <button id="resetSettingsBtn" class="btn-reset-settings">
+                    <i class="fas fa-undo-alt"></i> Reset to Default
+                </button>
+                <a href="game.html" class="btn-back-to-game">
+                    <i class="fas fa-gamepad"></i> Back to Game
+                </a>
+            </div>
+            <div class="settings-status" id="settingsStatus"></div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <span class="footer-logo">🐱 CatTrap<em>Pro</em></span>
+            </div>
+            <div class="footer-nav">
+                <h5>Pages</h5>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="game.html">Play Game</a></li>
+                    <li><a href="howto.html">How to Play</a></li>
+                    <li><a href="halloffame.html">Hall of Fame</a></li>
+                    <li><a href="settings.html">Settings</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </div>
+            <div class="footer-meta">
+                <p> Cat Trap Pro</p>
+                <p class="footer-quote">"Every cat is a master of the art of relaxation."</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <!-- settings.js REMOVED to prevent conflict - all functionality in inline script -->
+    <script src="js/theme.js"></script>
+    <script>
+        // ========================================
+        // PAGE ANIMATIONS & CURSOR EFFECTS
+        // ========================================
+
+        // Hide loading screen
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                var loader = document.getElementById('loadingScreen');
+                if (loader) loader.classList.add('hidden');
+            }, 800);
+        });
+
+        // Cursor glow effect
+        var glow = document.getElementById('cursorGlow');
+        if (glow) {
+            document.addEventListener('mousemove', function(e) {
+                glow.style.left = e.clientX + 'px';
+                glow.style.top = e.clientY + 'px';
+            });
+        }
+
+        // Cursor trail effect
+        var trail = document.getElementById('cursorTrail');
+        if (trail) {
+            var trailX = 0,
+                trailY = 0;
+            var mouseX = 0,
+                mouseY = 0;
+            document.addEventListener('mousemove', function(e) {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+            });
+
+            function animateTrail() {
+                trailX += (mouseX - trailX) * 0.15;
+                trailY += (mouseY - trailY) * 0.15;
+                trail.style.left = trailX + 'px';
+                trail.style.top = trailY + 'px';
+                requestAnimationFrame(animateTrail);
+            }
+            animateTrail();
+        }
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            var navbar = document.getElementById('navbar');
+            if (navbar) {
+                if (window.scrollY > 50) navbar.classList.add('scrolled');
+                else navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Theme toggle
+        var themeBtn = document.getElementById('themeToggle');
+        if (themeBtn) {
+            themeBtn.addEventListener('click', function() {
+                var hasDark = document.documentElement.getAttribute('data-theme') === 'dark';
+                if (hasDark) document.documentElement.removeAttribute('data-theme');
+                else document.documentElement.setAttribute('data-theme', 'dark');
+            });
+        }
+
+        // Volume Control
+        var volumeSlider = document.getElementById('volumeSlider');
+        var volumeValue = document.getElementById('volumeValue');
+        var volumeUp = document.getElementById('volumeUp');
+        var volumeDown = document.getElementById('volumeDown');
+
+        if (volumeSlider) {
+            volumeSlider.addEventListener('input', function() {
+                volumeValue.textContent = this.value;
+            });
+
+            if (volumeUp) {
+                volumeUp.addEventListener('click', function() {
+                    volumeSlider.value = Math.min(100, parseInt(volumeSlider.value) + 5);
+                    volumeValue.textContent = volumeSlider.value;
+                });
+            }
+
+            if (volumeDown) {
+                volumeDown.addEventListener('click', function() {
+                    volumeSlider.value = Math.max(0, parseInt(volumeSlider.value) - 5);
+                    volumeValue.textContent = volumeSlider.value;
+                });
+            }
+        }
+
+        // Cat Size Control
+        var catSize = document.getElementById('catSize');
+        var sizeValue = document.getElementById('sizeValue');
+        var previewCat = document.getElementById('previewCat');
+
+        if (catSize) {
+            catSize.addEventListener('input', function() {
+                sizeValue.textContent = this.value;
+                if (previewCat) {
+                    previewCat.style.fontSize = this.value + 'rem';
+                }
+            });
+        }
+
+        // Color Picker
+        var catColorPicker = document.getElementById('catColorPicker');
+        var colorHex = document.getElementById('colorHex');
+
+        if (catColorPicker) {
+            catColorPicker.addEventListener('input', function() {
+                colorHex.textContent = this.value.toUpperCase();
+                if (previewCat) previewCat.style.color = this.value;
+                document.querySelectorAll('.color-preset').forEach(b => b.classList.remove('active'));
+            });
+        }
+
+        // Warning Color Picker
+        var warningColor = document.getElementById('warningColor');
+        var warningColorHex = document.getElementById('warningColorHex');
+
+        if (warningColor) {
+            warningColor.addEventListener('input', function() {
+                warningColorHex.textContent = this.value.toUpperCase();
+            });
+        }
+
+        // Level Selector
+        var levelMinus = document.getElementById('levelMinus');
+        var levelPlus = document.getElementById('levelPlus');
+        var startLevelInput = document.getElementById('startLevel');
+
+        if (levelMinus && startLevelInput) {
+            levelMinus.addEventListener('click', function() {
+                var newVal = Math.max(1, parseInt(startLevelInput.value) - 1);
+                startLevelInput.value = newVal;
+            });
+        }
+
+        if (levelPlus && startLevelInput) {
+            levelPlus.addEventListener('click', function() {
+                var newVal = Math.min(10, parseInt(startLevelInput.value) + 1);
+                startLevelInput.value = newVal;
+            });
+        }
+
+        // Personality Button Handlers
+        document.querySelectorAll('.personality-option').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.personality-option').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Difficulty Button Handlers
+        document.querySelectorAll('.difficulty-option').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.difficulty-option').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Color Preset Handlers
+        document.querySelectorAll('.color-preset').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.color-preset').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                var color = this.dataset.color;
+                var colorCode = '';
+                switch (color) {
+                    case 'orange':
+                        colorCode = '#FFA500';
+                        break;
+                    case 'gray':
+                        colorCode = '#808080';
+                        break;
+                    case 'brown':
+                        colorCode = '#8B4513';
+                        break;
+                    case 'white':
+                        colorCode = '#FFFFFF';
+                        break;
+                    case 'black':
+                        colorCode = '#000000';
+                        break;
+                }
+                document.getElementById('catColorPicker').value = colorCode;
+                document.getElementById('colorHex').textContent = colorCode.toUpperCase();
+                if (previewCat) previewCat.style.color = colorCode;
+            });
+        });
+
+        // Test Sound Button
+        var testSoundBtn = document.getElementById('testSoundBtn');
+        if (testSoundBtn) {
+            testSoundBtn.addEventListener('click', function() {
+                try {
+                    var audioCtx = new(window.AudioContext || window.webkitAudioContext)();
+                    var oscillator = audioCtx.createOscillator();
+                    var gainNode = audioCtx.createGain();
+                    oscillator.connect(gainNode);
+                    gainNode.connect(audioCtx.destination);
+                    oscillator.frequency.value = 880;
+                    oscillator.type = 'sine';
+                    gainNode.gain.setValueAtTime(0.3, audioCtx.currentTime);
+                    gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.2);
+                    oscillator.start(audioCtx.currentTime);
+                    oscillator.stop(audioCtx.currentTime + 0.2);
+                } catch (e) {
+                    console.log('Sound test failed');
+                }
+            });
+        }
+
+        // ========================================
+        // SAVE SETTINGS - FULLY WORKING
+        // ========================================
+        var saveSettingsBtn = document.getElementById('saveSettingsBtn');
+        if (saveSettingsBtn) {
+            saveSettingsBtn.addEventListener('click', function() {
+                var settings = {
+                    masterSound: document.getElementById('masterSound').checked,
+                    bgMusic: document.getElementById('bgMusic').checked,
+                    clickSound: document.getElementById('clickSound').checked,
+                    volume: parseInt(document.getElementById('volumeSlider').value),
+                    selectedSong: document.getElementById('songSelect').value,
+                    catColor: document.getElementById('catColorPicker').value,
+                    catSize: parseFloat(document.getElementById('catSize').value),
+                    catPersonality: document.querySelector('.personality-option.active').getAttribute('data-personality'),
+                    timerDuration: parseInt(document.getElementById('timerDuration').value),
+                    timerWarning: document.getElementById('timerWarning').checked,
+                    warningTime: parseInt(document.getElementById('warningTime').value),
+                    warningColor: document.getElementById('warningColor').value,
+                    difficulty: document.querySelector('.difficulty-option.active').getAttribute('data-difficulty'),
+                    startLevel: parseInt(document.getElementById('startLevel').value),
+                    showTimer: document.getElementById('showTimer').checked,
+                    showScore: document.getElementById('showScore').checked,
+                    particleEffects: document.getElementById('particleEffects').checked
+                };
+
+                localStorage.setItem('catTrapSettings', JSON.stringify(settings));
+                localStorage.setItem('catTrapStartLevel', settings.startLevel);
+
+                console.log('✅ Settings saved - Starting Level:', settings.startLevel);
+
+                var settingsStatus = document.getElementById('settingsStatus');
+                settingsStatus.textContent = '✓ Settings saved! Starting Level: ' + settings.startLevel;
+                settingsStatus.className = 'settings-status success';
+                settingsStatus.style.display = 'block';
+
+                setTimeout(function() {
+                    settingsStatus.style.display = 'none';
+                }, 3000);
+            });
+        }
+
+        // ================
+        // RESET SETTINGS 
+        // ================
+        var resetSettingsBtn = document.getElementById('resetSettingsBtn');
+        if (resetSettingsBtn) {
+            resetSettingsBtn.addEventListener('click', function() {
+                if (confirm('Reset all settings to default values?')) {
+                    document.getElementById('masterSound').checked = true;
+                    document.getElementById('bgMusic').checked = true;
+                    document.getElementById('clickSound').checked = true;
+                    document.getElementById('timerWarning').checked = true;
+                    document.getElementById('showTimer').checked = true;
+                    document.getElementById('showScore').checked = true;
+                    document.getElementById('particleEffects').checked = true;
+                    document.getElementById('songSelect').value = 'song1';
+                    document.getElementById('volumeSlider').value = 70;
+                    document.getElementById('volumeValue').textContent = '70';
+                    document.getElementById('timerDuration').value = '30';
+                    document.getElementById('warningTime').value = '10';
+                    document.getElementById('warningColor').value = '#ff4444';
+                    document.getElementById('warningColorHex').textContent = '#FF4444';
+                    document.getElementById('catColorPicker').value = '#FFA500';
+                    document.getElementById('colorHex').textContent = '#FFA500';
+                    document.getElementById('catSize').value = '4.5';
+                    document.getElementById('sizeValue').textContent = '4.5';
+                    document.getElementById('startLevel').value = '1';
+
+                    if (previewCat) {
+                        previewCat.style.fontSize = '4.5rem';
+                        previewCat.style.color = '#FFA500';
+                    }
+
+                    document.querySelectorAll('.personality-option').forEach(btn => {
+                        btn.classList.remove('active');
+                        if (btn.getAttribute('data-personality') === 'normal') btn.classList.add('active');
+                    });
+
+                    document.querySelectorAll('.difficulty-option').forEach(btn => {
+                        btn.classList.remove('active');
+                        if (btn.getAttribute('data-difficulty') === 'normal') btn.classList.add('active');
+                    });
+
+                    document.querySelectorAll('.color-preset').forEach(btn => {
+                        btn.classList.remove('active');
+                        if (btn.getAttribute('data-color') === 'orange') btn.classList.add('active');
+                    });
+
+                    var defaultSettings = {
+                        masterSound: true,
+                        bgMusic: true,
+                        clickSound: true,
+                        volume: 70,
+                        selectedSong: 'song1',
+                        catColor: '#FFA500',
+                        catSize: 4.5,
+                        catPersonality: 'normal',
+                        timerDuration: 30,
+                        timerWarning: true,
+                        warningTime: 10,
+                        warningColor: '#ff4444',
+                        difficulty: 'normal',
+                        startLevel: 1,
+                        showTimer: true,
+                        showScore: true,
+                        particleEffects: true
+                    };
+
+                    localStorage.setItem('catTrapSettings', JSON.stringify(defaultSettings));
+                    localStorage.setItem('catTrapStartLevel', 1);
+
+                    console.log('✅ Settings reset to default - Starting Level: 1');
+
+                    var settingsStatus = document.getElementById('settingsStatus');
+                    settingsStatus.textContent = '↻ Reset to default! Starting Level: 1';
+                    settingsStatus.className = 'settings-status info';
+                    settingsStatus.style.display = 'block';
+
+                    setTimeout(function() {
+                        settingsStatus.style.display = 'none';
+                    }, 3000);
+                }
+            });
+        }
+
+        // ========================================
+        // LOAD SAVED SETTINGS ON PAGE LOAD
+        // ========================================
+        function loadSavedSettings() {
+            var saved = localStorage.getItem('catTrapSettings');
+            if (saved) {
+                try {
+                    var settings = JSON.parse(saved);
+                    if (settings.startLevel) {
+                        document.getElementById('startLevel').value = settings.startLevel;
+                        console.log('📥 Loaded saved start level:', settings.startLevel);
+                    }
+                    if (settings.masterSound !== undefined) document.getElementById('masterSound').checked = settings.masterSound;
+                    if (settings.bgMusic !== undefined) document.getElementById('bgMusic').checked = settings.bgMusic;
+                    if (settings.clickSound !== undefined) document.getElementById('clickSound').checked = settings.clickSound;
+                    if (settings.volume) {
+                        document.getElementById('volumeSlider').value = settings.volume;
+                        document.getElementById('volumeValue').textContent = settings.volume;
+                    }
+                    if (settings.catColor) {
+                        document.getElementById('catColorPicker').value = settings.catColor;
+                        document.getElementById('colorHex').textContent = settings.catColor.toUpperCase();
+                        if (previewCat) previewCat.style.color = settings.catColor;
+                    }
+                    if (settings.catSize) {
+                        document.getElementById('catSize').value = settings.catSize;
+                        document.getElementById('sizeValue').textContent = settings.catSize;
+                        if (previewCat) previewCat.style.fontSize = settings.catSize + 'rem';
+                    }
+                    if (settings.catPersonality) {
+                        document.querySelectorAll('.personality-option').forEach(btn => {
+                            btn.classList.remove('active');
+                            if (btn.getAttribute('data-personality') === settings.catPersonality) {
+                                btn.classList.add('active');
+                            }
+                        });
+                    }
+                    if (settings.difficulty) {
+                        document.querySelectorAll('.difficulty-option').forEach(btn => {
+                            btn.classList.remove('active');
+                            if (btn.getAttribute('data-difficulty') === settings.difficulty) {
+                                btn.classList.add('active');
+                            }
+                        });
+                    }
+                    if (settings.timerDuration) document.getElementById('timerDuration').value = settings.timerDuration;
+                    if (settings.timerWarning !== undefined) document.getElementById('timerWarning').checked = settings.timerWarning;
+                    if (settings.warningTime) document.getElementById('warningTime').value = settings.warningTime;
+                    if (settings.warningColor) {
+                        document.getElementById('warningColor').value = settings.warningColor;
+                        document.getElementById('warningColorHex').textContent = settings.warningColor.toUpperCase();
+                    }
+                    if (settings.showTimer !== undefined) document.getElementById('showTimer').checked = settings.showTimer;
+                    if (settings.showScore !== undefined) document.getElementById('showScore').checked = settings.showScore;
+                    if (settings.particleEffects !== undefined) document.getElementById('particleEffects').checked = settings.particleEffects;
+                    if (settings.selectedSong) document.getElementById('songSelect').value = settings.selectedSong;
+                } catch (e) {
+                    console.log('Error loading settings', e);
+                }
+            }
+        }
+
+        // Load settings when page loads
+        loadSavedSettings();
+    </script>
+</body>
+
+</html>
